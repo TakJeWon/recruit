@@ -2,7 +2,6 @@ package com.castis.career.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class CareerController {
@@ -41,7 +40,17 @@ public class CareerController {
 
     @GetMapping("/admin")
     public String adminPage(){
-        return "/view/admin";
+        return "/adminView/adminDashboard";
+    }
+
+    @GetMapping("/boardSetting")
+    public String adminBoardSetting(){
+        return "/adminView/adminBoardSetting";
+    }
+
+    @GetMapping("/register")
+    public String adminAddBoard(){
+        return "/adminView/adminAddBoard";
     }
 
 
