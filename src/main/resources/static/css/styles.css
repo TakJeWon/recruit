@@ -11127,6 +11127,18 @@ header.masthead {
   background-size: cover;
   background-attachment: scroll;
 }
+
+header.masthead2 {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-top: calc(8rem);
+  padding-bottom: 8rem;
+  background: no-repeat center center;
+  background-color: #2c3034;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
 header.masthead:before {
   content: "";
   position: absolute;
@@ -11241,6 +11253,87 @@ header.masthead .post-heading .meta a {
 .post-preview > .post-meta > a {
   text-decoration: none;
 }
+
+.custom_search_input{
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 17px 20px;
+  gap: 10px;
+
+  width: 250px;
+  height: 40px;
+
+  border: 1px solid #D5D5D6;
+  border-radius: 7px;
+
+  flex: none;
+  order: 0;
+  align-self: center;
+  flex-grow: 0;
+
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+
+.custom_search_button{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 15px;
+  gap: 10px;
+
+  height: 40px;
+
+  border: none;
+  background: #669D67;
+  border-radius: 7px;
+  color: #ffffff;
+
+  flex: none;
+  order: 1;
+  align-self: center;
+  flex-grow: 0;
+
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.custom_board_line{
+  border: 2px solid #D9D9D9;
+  width: 100%;
+}
+
+.custom_board_text{
+  font-family: 'Noto Looped Thai UI';
+  font-style: normal;
+
+}
+
+.custom_board_title{
+  font-weight: 800;
+  font-size: 25px;
+  line-height: 28px;
+
+  /*color: rgba(0, 0, 14, 0.55);*/
+}
+
+.custom_board_content{
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 18px;
+
+}
+
 @media (min-width: 992px) {
   .post-preview > a > .post-title {
     font-size: 2.25rem;

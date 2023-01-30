@@ -39,5 +39,10 @@ public class CareerController {
         return "/view/faq";
     }
 
+    @GetMapping("/admin")
+    public String adminPage(){
+        return "/view/admin";
+    }
+
 
 }
