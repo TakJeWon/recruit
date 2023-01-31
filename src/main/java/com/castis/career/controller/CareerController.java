@@ -1,11 +1,19 @@
 package com.castis.career.controller;
 
+import com.castis.career.entity.Board;
+import com.castis.career.service.BoardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class CareerController {
 
+    @Autowired
+    private BoardService boardService;
 
     @GetMapping("/")
     public String root() {
@@ -29,7 +37,10 @@ public class CareerController {
     }
 
     @GetMapping("/jobs")
-    public String jobsPage(){
+    public String jobsPage(Model model){
+
+        model.addAttribute("boardList", boardService.boardList());
+
         return "/view/jobs";
     }
 
@@ -44,7 +55,10 @@ public class CareerController {
     }
 
     @GetMapping("/boardSetting")
-    public String adminBoardSetting(){
+    public String adminBoardSetting(Model model){
+
+        model.addAttribute("boardList", boardService.boardList());
+
         return "/adminView/adminBoardSetting";
     }
 
@@ -53,5 +67,24 @@ public class CareerController {
         return "/adminView/adminAddBoard";
     }
 
+    @PostMapping("/register/success")
+    public String adminAddBoardSuccess(Board board){
+
+        boardService.write(board);
+
+        return "redirect:/boardSetting";
+     }
+
+    @GetMapping("/register/delete")
+    public String adminBoardDelete(Integer id){
+        boardService.boardDelete(id);
+
+        return "redirect:/boardSetting";
+     }
+
+     @GetMapping("/boardSetting/modify/{id}")
+     public String adminBoardEdit(@PathVariable("id") Integer id){
+        return "/adminView/adminEditBoard";
+     }
 
 }

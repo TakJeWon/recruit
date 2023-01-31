@@ -1,5 +1,5 @@
 <html layout:decorate="~{/adminView/adminIndex}">
-<div layout:fragment="adminContent" class="container-fluid">
+<div layout:fragment="adminContent" class="container-fluid" xmlns:th="http://www.thymeleaf.org">
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">공고목록 관리</h1>
@@ -19,21 +19,20 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <th:block th:each="num : ${#numbers.sequence(1,10)}">
-                        <tr>
-                            <td>Tiger Nixon</td>
+                    <tr th:each="board : ${boardList}">
+                            <td th:text="${board.title}">Tiger Nixon</td>
                             <td>System Architect</td>
                             <td>61</td>
                             <td class="d-flex justify-content-around">
-                                <a href="#" class="btn btn-warning btn-circle">
+<!--                                <a th:href="@{/boardSetting/modify/{id}(id=${board.id})}" class="btn btn-warning btn-circle">-->
+                                <a class="btn btn-warning btn-circle">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <a href="#" class="btn btn-danger btn-circle ms-2">
+                                <a th:href="@{/register/delete(id=${board.id})}" class="btn btn-danger btn-circle ms-2">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </td>
                         </tr>
-                    </th:block>
                     </tbody>
                 </table>
             </div>

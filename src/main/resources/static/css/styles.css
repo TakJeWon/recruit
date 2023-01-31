@@ -11123,7 +11123,7 @@ header.masthead {
   padding-top: calc(8rem + 57px);
   padding-bottom: 8rem;
   background: no-repeat center center;
-  background-color: #6c757d;
+  background-color: #ffffff;
   background-size: cover;
   background-attachment: scroll;
 }
@@ -11131,10 +11131,20 @@ header.masthead {
 header.masthead2 {
   position: relative;
   margin-bottom: 3rem;
-  padding-top: calc(8rem);
-  padding-bottom: 8rem;
+  padding-top: calc(3rem);
+  padding-bottom: 3rem;
   background: no-repeat center center;
-  background-color: #2c3034;
+  background-color: #ffffff;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+header.mastheadMain {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-top: calc(3rem);
+  background: no-repeat center center;
+  background-color: #ffffff;
   background-size: cover;
   background-attachment: scroll;
 }
@@ -11152,7 +11162,7 @@ header.masthead:before {
 header.masthead .page-heading,
 header.masthead .post-heading,
 header.masthead .site-heading {
-  color: #fff;
+  color: #000;
 }
 header.masthead .page-heading,
 header.masthead .site-heading {
@@ -11332,6 +11342,10 @@ header.masthead .post-heading .meta a {
   font-size: 15px;
   line-height: 18px;
 
+}
+
+.custom_span{
+  margin-right: 70px;
 }
 
 @media (min-width: 992px) {
