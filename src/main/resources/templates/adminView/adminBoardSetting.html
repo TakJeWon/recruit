@@ -24,8 +24,8 @@
                             <td>System Architect</td>
                             <td>61</td>
                             <td class="d-flex justify-content-around">
-<!--                                <a th:href="@{/boardSetting/modify/{id}(id=${board.id})}" class="btn btn-warning btn-circle">-->
-                                <a class="btn btn-warning btn-circle">
+                                <a th:href="@{/boardView(id=${board.id})}" class="btn btn-warning btn-circle">
+<!--                                <a class="btn btn-warning btn-circle">-->
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <a th:href="@{/register/delete(id=${board.id})}" class="btn btn-danger btn-circle ms-2">

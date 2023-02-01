@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.io.Console;
+
 @Controller
 public class CareerController {
 
@@ -39,9 +42,17 @@ public class CareerController {
     @GetMapping("/jobs")
     public String jobsPage(Model model){
 
-        model.addAttribute("boardList", boardService.boardList());
+        model.addAttribute("jobList", boardService.boardList());
 
         return "/view/jobs";
+    }
+
+    @GetMapping("/jobDetail")
+    public String jobDetailPage( Integer id, Model model){
+
+        model.addAttribute("jobDetails", boardService.boardView(id));
+
+        return "/view/jobs_detail";
     }
 
     @GetMapping("/faq")
@@ -82,9 +93,29 @@ public class CareerController {
         return "redirect:/boardSetting";
      }
 
-     @GetMapping("/boardSetting/modify/{id}")
-     public String adminBoardEdit(@PathVariable("id") Integer id){
-        return "/adminView/adminEditBoard";
+     @GetMapping("/boardView")
+     public String adminBoardView( Integer id, Model model){
+
+        model.addAttribute("board", boardService.boardView(id));
+
+        return "/adminView/adminBoardView";
      }
+
+     @PostMapping("/register/update/{id}")
+     public String adminBoardUpdate(@PathVariable("id") Integer id,
+                                  Board board){
+
+        Board boardTemp = boardService.boardView(id);
+        boardTemp.setTitle(board.getTitle());
+        boardTemp.setContent(board.getContent());
+
+        System.out.println("board" + board.getContent());
+        System.out.println("boardTemp" + boardTemp);
+
+        boardService.write(boardTemp);
+
+        return "redirect:/boardSetting";
+     }
+
 
 }

@@ -20,6 +20,21 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- TinyMCE CDN -->
+    <script src="https://cdn.tiny.cloud/1/ofjfgr2szlluruodfqmlyeludc9k23siondi5yd3ksrfz0wv/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+            selector: 'textarea#editor',
+            skin: 'bootstrap',
+            plugins: 'lists, link, image, media',
+            toolbar: 'undo redo | styleselect | fontsizeselect | bold italic strikethrough blockquote bullist numlist backcolor| alignleft aligncenter alignright alignjustify | outdent indent | link image media | removeformat help',
+            fontsize_formats: "8pt 9pt 10pt 11pt 12pt 14pt 18pt 24pt 30pt 36pt 48pt 60pt 72pt 96pt",
+            content_style: "body { font-size: 14pt; }",
+            menubar: true,
+        });
+    </script>
+
 </head>
 
 <body id="page-top">

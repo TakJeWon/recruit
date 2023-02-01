@@ -1,10 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html layout:decorate="~{index}">
+<header layout:fragment="header" class="masthead2" xmlns:th="http://www.thymeleaf.org">
+    <div class="container position-relative px-4 px-lg-5">
+        <!--        <div class="row gx-4 gx-lg-5 justify-content-center">-->
+        <!--            <div class="col-md-10 col-lg-8 col-xl-7">-->
+        <!--                <div class="post-heading">-->
+        <!--                    <h1>Explore Jobs you want</h1>-->
+        <!--                    <h2 class="subheading">Problems look mighty small from 150 miles up</h2>-->
+        <!--                    <span class="meta">-->
+        <!--                                Posted by-->
+        <!--                                <a href="#!">Start Bootstrap</a>-->
+        <!--                                on August 24, 2022-->
+        <!--                            </span>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+    </div>
+</header>
+<!-- Post Content-->
+<article layout:fragment="content" class="mb-4">
+    <div class="container-fluid d-flex flex-row justify-content-center">
+        <div class="col-3" style="height: 500px; ">
 
-</body>
+            <div class="d-flex justify-content-start m-3 mb-5 custom_board_text"
+                 style="font-weight: 800; font-size: 30px">
+                채용 공고</div>
+            <div class="d-flex m-3 p-2 flex-column justify-content-between" style=" height: 1000px;"></div>
+        </div>
+        <div class="board col-8 ms-5 d-flex flex-column">
+            <div class="d-flex justify-content-end m-3 mb-5">
+                <input class="custom_search_input" placeholder="KEYWORD"/>
+                <button class="ms-3 custom_search_button">
+                    <span>SEARCH</span>
+                </button>
+            </div>
+            <div class="d-flex m-3 p-2 flex-column justify-content-start">
+                <div class="custom_board_text custom_board_title mb-3" th:text="${jobDetails.title}"> 2023년 상반기 BO(비즈니스오너)/PM(프로젝트매니저) 모집 </div>
+                <div class="custom_board_text custom_board_content"> 경력무관 / 학력무관 / 정규직 / 서울 관악구 </div>
+                <div class="custom_board_text custom_board_content d-flex justify-content-end"> 지원기간 : 2023.01.02 ~ 2023.01.30 </div>
+                <p class="custom_board_text custom_board_content d-flex justify-content-end" th:utext="${jobDetails.content}"> 지원기간 : 2023.01.02 ~ 2023.01.30 </p>
+            </div>
+        </div>
+    </div>
+</article>
+<!-- Footer-->
+<footer layout:fragment="footer" class="border-top">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item">
+                        <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                    </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2022</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
 </html>

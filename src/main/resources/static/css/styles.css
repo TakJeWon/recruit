@@ -11139,6 +11139,18 @@ header.masthead2 {
   background-attachment: scroll;
 }
 
+header.mastheadJobs {
+   position: relative;
+   margin-bottom: 3rem;
+   padding-top: calc(8rem);
+   padding-bottom: 8rem;
+   background: no-repeat center center;
+   background-color: #ffffff;
+   background-size: cover;
+   background-attachment: scroll;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.1);;
+ }
+
 header.mastheadMain {
   position: relative;
   margin-bottom: 3rem;

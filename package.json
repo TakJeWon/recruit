@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "bootstrap": "^5.2.3",
-    "bootstrap-datepicker": "^1.9.0"
+    "bootstrap-datepicker": "^1.9.0",
+    "tinymce": "^6.3.1"
   }
 }
