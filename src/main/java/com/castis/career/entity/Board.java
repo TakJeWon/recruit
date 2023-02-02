@@ -1,11 +1,13 @@
 package com.castis.career.entity;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 @Data
@@ -18,4 +20,18 @@ public class Board {
     private String title;
 
     private String content;
+
+    private String experience;
+
+    private String education;
+
+    private String type;
+
+    private String location;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date start_date;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date end_date;
 }

@@ -35,9 +35,23 @@
             </div>
             <div class="d-flex m-3 p-2 flex-column justify-content-start">
                 <div class="custom_board_text custom_board_title mb-3" th:text="${jobDetails.title}"> 2023년 상반기 BO(비즈니스오너)/PM(프로젝트매니저) 모집 </div>
-                <div class="custom_board_text custom_board_content"> 경력무관 / 학력무관 / 정규직 / 서울 관악구 </div>
-                <div class="custom_board_text custom_board_content d-flex justify-content-end"> 지원기간 : 2023.01.02 ~ 2023.01.30 </div>
-                <p class="custom_board_text custom_board_content d-flex justify-content-end" th:utext="${jobDetails.content}"> 지원기간 : 2023.01.02 ~ 2023.01.30 </p>
+                <div class="custom_board_text custom_board_content">
+                    <span th:text="${jobDetails.experience}"></span> /
+                    <span th:text="${jobDetails.education}"></span> /
+                    <span th:text="${jobDetails.type}"></span> /
+                    <span th:text="${jobDetails.location}"></span> </div>
+                <div class="custom_board_text custom_board_content d-flex justify-content-end">
+                    지원기간 :&nbsp;
+                    <span th:text="${#dates.format(jobDetails.start_date, 'yyyy.MM.dd')}"></span>
+                    &nbsp;~&nbsp;
+                    <span th:text="${#dates.format(jobDetails.end_date, 'yyyy.MM.dd')}"></span>
+                </div>
+                <p class="custom_board_text custom_board_content d-flex justify-content-end" th:utext="${jobDetails.content}"> </p>
+                <button class="d-flex justify-content-center custom_apply_button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modal_apply">
+                    <span>지원하기</span>
+                </button>
             </div>
         </div>
     </div>

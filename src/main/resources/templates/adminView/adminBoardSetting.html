@@ -13,7 +13,7 @@
                     <thead>
                     <tr>
                         <th style="width: 60%">공고 제목</th>
-                        <th style="width: 20%">등록 날짜</th>
+                        <th style="width: 20%">공고 등록기간</th>
                         <th style="width: 10%">조회수</th>
                         <th style="width: 10%"></th>
                     </tr>
@@ -21,7 +21,11 @@
                     <tbody>
                     <tr th:each="board : ${boardList}">
                             <td th:text="${board.title}">Tiger Nixon</td>
-                            <td>System Architect</td>
+                            <td>
+                                <span th:text="${#dates.format(board.start_date, 'yyyy.MM.dd')}"></span>
+                                &nbsp;~&nbsp;
+                                <span th:text="${#dates.format(board.end_date, 'yyyy.MM.dd')}"></span>
+                            </td>
                             <td>61</td>
                             <td class="d-flex justify-content-around">
                                 <a th:href="@{/boardView(id=${board.id})}" class="btn btn-warning btn-circle">

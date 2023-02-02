@@ -11330,6 +11330,33 @@ header.masthead .post-heading .meta a {
   line-height: 20px;
 }
 
+.custom_apply_button{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+
+  height: 40px;
+  width: 200px;
+
+  border: none;
+  background: #669D67;
+  border-radius: 7px;
+  color: #ffffff;
+
+  flex: none;
+  order: 1;
+  align-self: center;
+  flex-grow: 0;
+
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+}
+
 .custom_board_line{
   border: 2px solid #D9D9D9;
   width: 100%;

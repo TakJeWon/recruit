@@ -27,9 +27,18 @@
                 <tr th:each="job : ${jobList}">
                     <a th:href="@{/jobDetail(id=${job.id})}">
                         <div class="custom_board_text custom_board_title mb-3" th:text="${job.title}"> 2023년 상반기 BO(비즈니스오너)/PM(프로젝트매니저) 모집 </div>
-                        <div class="custom_board_text custom_board_content"> 경력무관 / 학력무관 / 정규직 / 서울 관악구 </div>
+                        <div class="custom_board_text custom_board_content">
+                            <span th:text="${job.experience}"></span> /
+                            <span th:text="${job.education}"></span> /
+                            <span th:text="${job.type}"></span> /
+                            <span th:text="${job.location}"></span> </div>
                     </a>
-                    <div class="custom_board_text custom_board_content d-flex justify-content-end"> 지원기간 : 2023.01.02 ~ 2023.01.30 </div>
+                    <div class="custom_board_text custom_board_content d-flex justify-content-end">
+                        지원기간 :&nbsp;
+                        <span th:text="${#dates.format(job.start_date, 'yyyy.MM.dd')}"></span>
+                        &nbsp;~&nbsp;
+                        <span th:text="${#dates.format(job.end_date, 'yyyy.MM.dd')}"></span>
+                    </div>
                     <hr class="my-4" />
                 </tr>
             </div>

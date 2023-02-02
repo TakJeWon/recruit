@@ -108,9 +108,12 @@ public class CareerController {
         Board boardTemp = boardService.boardView(id);
         boardTemp.setTitle(board.getTitle());
         boardTemp.setContent(board.getContent());
-
-        System.out.println("board" + board.getContent());
-        System.out.println("boardTemp" + boardTemp);
+        boardTemp.setEducation(board.getEducation());
+        boardTemp.setExperience(board.getExperience());
+        boardTemp.setType(board.getType());
+        boardTemp.setLocation(board.getLocation());
+        boardTemp.setStart_date(board.getStart_date());
+        boardTemp.setEnd_date(board.getEnd_date());
 
         boardService.write(boardTemp);
 
