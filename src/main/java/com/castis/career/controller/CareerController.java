@@ -55,6 +55,14 @@ public class CareerController {
         return "/view/jobs_detail";
     }
 
+    @GetMapping("/jobApply")
+    public String jobApplyPage( Integer id, Model model){
+
+        model.addAttribute("jobDetails", boardService.boardView(id));
+
+        return "/view/apply";
+    }
+
     @GetMapping("/faq")
     public String faqPage(){
         return "/view/faq";

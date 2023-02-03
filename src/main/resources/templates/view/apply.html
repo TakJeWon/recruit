@@ -19,33 +19,49 @@
 <!-- Post Content-->
 <article layout:fragment="content" class="mb-4">
     <div class="container">
-<!--        <div class="col-3" style="height: 500px; ">-->
-
-<!--            <div class="d-flex justify-content-start m-3 mb-5 custom_board_text"-->
-<!--                 style="font-weight: 800; font-size: 30px">-->
-<!--                채용 공고</div>-->
-<!--            <div class="d-flex m-3 p-2 flex-column justify-content-between" style=" height: 1000px;"></div>-->
-<!--        </div>-->
-        <div class="jobList">
-            <div class="d-flex m-3 p-2 flex-column justify-content-start">
-                <div class="custom_board_text custom_board_title mb-3" th:text="${jobDetails.title}"> 2023년 상반기 BO(비즈니스오너)/PM(프로젝트매니저) 모집 </div>
-                <div class="custom_board_text custom_board_content mb-3">
-                    <span th:text="${jobDetails.experience}"></span> /
-                    <span th:text="${jobDetails.education}"></span> /
-                    <span th:text="${jobDetails.type}"></span> /
-                    <span th:text="${jobDetails.location}"></span> </div>
-                <div class="custom_board_text custom_board_content d-flex justify-content-end">
-                    지원기간 :&nbsp;
-                    <span th:text="${#dates.format(jobDetails.start_date, 'yyyy.MM.dd')}"></span>
-                    &nbsp;~&nbsp;
-                    <span th:text="${#dates.format(jobDetails.end_date, 'yyyy.MM.dd')}"></span>
+        <div class="d-flex justify-content-start m-3 mb-5 custom_board_text"
+             style="font-weight: 800; font-size: 30px">
+            지원하기
+        </div>
+        <div class="card shadow" style="margin-bottom: 50px">
+            <form class="card-body m-3" action="/register/success" method="post">
+                <div class="d-flex justify-content-start mb-3">
+                    <span style="width: 150px;">지원 공고</span>
+                    <input class="form-control" style="width: 70%" type="text" name="title" th:value="${jobDetails.title}" disabled="true">
                 </div>
-                <p class="custom_board_text custom_board_content d-flex justify-content-end" th:utext="${jobDetails.content}"> </p>
-                <a class="btn btn-sm d-flex justify-content-center custom_apply_button my-5"
-                        th:href="@{/jobApply(id=${jobDetails.id})}">
-                    <span>지원하기</span>
-                </a>
-            </div>
+                <div class="d-flex justify-content-start mb-3">
+                    <span style="width: 150px;">이름</span>
+                    <input class="form-control" style="width: 30%" type="text" name="name">
+                </div>
+                <div class="d-flex justify-content-start mb-3">
+                    <span style="width: 150px;">생년월일</span>
+                    <input class="form-control" style="width: 30%" type="text" name="birthday" placeholder="예) 1997.05.01">
+                </div>
+                <div class="d-flex justify-content-start mb-3">
+                    <span style="width: 150px;">이메일</span>
+                    <div>
+                        <input class="form-control" style="width: 100%" type="email" name="email">
+                        <div class="form-detail">
+                            *작성해주신 이메일로 지원 완료 결과를 보내드립니다.<br>
+                            *Yahoo, Daum 등 전달되지 않는 메일 형식이 있을 수 있습니다.<br>
+                            *보내드린 지원 완료 내역을 확인 하실 수 없는 경우 스팸함을 확인해주세요.
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-start mb-3">
+                    <span style="width: 150px;">첨부파일</span>
+                    <input class="form-control" type="file" style="width: 80%" name="file">
+                </div>
+                <div class="d-flex justify-content-center my-3">
+                    <button class="btn btn-sm me-3"
+                            style="height: 40px; width: 100px;"
+                    >목록으로</button>
+                    <button type="submit"
+                            class="btn btn-sm btn-primary"
+                            style="height: 40px; width: 100px;"
+                    >작성</button>
+                </div>
+            </form>
         </div>
     </div>
 </article>

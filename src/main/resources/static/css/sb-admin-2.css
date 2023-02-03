@@ -1825,6 +1825,12 @@ pre code {
   border: 0;
 }
 
+.form-detail{
+  font-size: 10px;
+  line-height: 13px;
+  color: #5a5c69;
+}
+
 .form-control {
   display: block;
   width: 100%;
@@ -2035,6 +2041,7 @@ textarea.form-control {
   margin-right: 0.3125rem;
   margin-left: 0;
 }
+
 
 .valid-feedback {
   display: none;
