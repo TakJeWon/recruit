@@ -2,15 +2,21 @@ package com.castis.career.controller;
 
 import com.castis.career.entity.Board;
 import com.castis.career.service.BoardService;
+import org.codehaus.groovy.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.Path;
 import java.io.Console;
+import java.nio.file.Paths;
 
 @Controller
 public class CareerController {
@@ -70,7 +76,7 @@ public class CareerController {
 
     @GetMapping("/admin")
     public String adminPage(){
-        return "/adminView/adminDashboard";
+        return "/adminView/adminLogin";
     }
 
     @GetMapping("/boardSetting")
@@ -93,6 +99,12 @@ public class CareerController {
 
         return "redirect:/boardSetting";
      }
+
+    @PostMapping("/apply/success")
+    public String applySuccess(Board board){
+
+        return "redirect:/jobs";
+    }
 
     @GetMapping("/register/delete")
     public String adminBoardDelete(Integer id){
