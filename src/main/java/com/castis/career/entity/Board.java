@@ -34,4 +34,8 @@ public class Board {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date end_date;
+
+    private String filename;
+
+    private String filepath;
 }
