@@ -1,6 +1,8 @@
 package com.castis.career.controller;
 
+import com.castis.career.entity.Apply;
 import com.castis.career.entity.Board;
+import com.castis.career.service.ApplyService;
 import com.castis.career.service.BoardService;
 import org.codehaus.groovy.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriUtils;
+import org.thymeleaf.spring5.processor.SpringInputRadioFieldTagProcessor;
 
 import javax.annotation.Resource;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -34,6 +37,9 @@ public class CareerController {
 
     @Autowired
     private BoardService boardService;
+
+    @Autowired
+    private ApplyService applyService;
 
 
     @GetMapping("/")
@@ -93,7 +99,7 @@ public class CareerController {
 
 
     @GetMapping("/jobApply")
-    public String jobApplyPage( Integer id, Model model){
+    public String jobApplyPage(Integer id, Model model){
 
         model.addAttribute("jobDetails", boardService.boardView(id));
 
@@ -131,8 +137,12 @@ public class CareerController {
         return "redirect:/boardSetting";
      }
 
-    @PostMapping("/apply/success")
-    public String applySuccess(Board board){
+    @PostMapping("/apply/success/{jobId}")
+    public String applySuccess(@PathVariable("jobId") Integer jobId,
+                               Apply apply,
+                               MultipartFile file) throws IOException {
+
+        applyService.applyWrite(jobId, apply, file);
 
         return "redirect:/jobs";
     }
@@ -166,6 +176,8 @@ public class CareerController {
         boardTemp.setLocation(board.getLocation());
         boardTemp.setStart_date(board.getStart_date());
         boardTemp.setEnd_date(board.getEnd_date());
+        boardTemp.setFilename(board.getFilename());
+        boardTemp.setFilepath(board.getFilepath());
 
         boardService.write(boardTemp, file);
 
