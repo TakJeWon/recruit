@@ -24,6 +24,7 @@ public class BoardService {
     //공고 저장
     public void write(Board board, MultipartFile file) throws IOException {
 
+        if (!file.getOriginalFilename().equals("")){
         // 파일 이름으로 쓸 uuid 생성
         UUID uuid = UUID.randomUUID();
 
@@ -36,6 +37,8 @@ public class BoardService {
         board.setFilename(file.getOriginalFilename());
         // 파일을 불러올 때 사용할 파일 경로
         board.setFilepath(fileDir + fileName);
+
+        }
 
         boardRepository.save(board);
     }
@@ -52,5 +55,6 @@ public class BoardService {
 
     //특정 게시글 불러오기
     public Board boardView(Integer id) { return boardRepository.findById(id).get(); }
+
 }
 

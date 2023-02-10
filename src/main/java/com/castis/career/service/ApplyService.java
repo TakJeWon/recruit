@@ -31,11 +31,11 @@ public class ApplyService {
     public void applyWrite(Integer jobId, Apply apply, MultipartFile file) throws IOException {
         Board board = boardRepository.findById(jobId).orElse(null);
 
+        if (!file.getOriginalFilename().equals("")){
         // 파일 이름으로 쓸 uuid 생성
         UUID uuid = UUID.randomUUID();
 
         String fileName = uuid + "_" + file.getOriginalFilename();
-        if (file.getOriginalFilename() != null){
             File saveFile = new File(fileDir, fileName);
 
             // 실제로 로컬에 uuid를 파일명으로 저장

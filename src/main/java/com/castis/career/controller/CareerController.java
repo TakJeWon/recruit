@@ -79,7 +79,7 @@ public class CareerController {
         return "/view/jobs_detail";
     }
 
-    // 첨부 파일 다운로드
+    // 공고 ; 첨부 파일 다운로드
     @GetMapping("/download/{id}")
     public ResponseEntity<UrlResource> downloadAttach(@PathVariable Integer id) throws MalformedURLException {
 
@@ -89,6 +89,24 @@ public class CareerController {
 
         UrlResource resource = new UrlResource("file:" + board_file.getFilepath());
         String encodedFileName = UriUtils.encode(board_fileName, StandardCharsets.UTF_8);
+
+        // 파일 다운로드 대화상자가 뜨도록 하는 헤더를 설정해주는 것
+        // Content-Disposition 헤더에 attachment; filename="업로드 파일명" 값을 준다.
+        String contentDisposition = "attachment; filename=\"" + encodedFileName + "\"";
+
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,contentDisposition).body(resource);
+    }
+
+    // 지원서 ; 첨부 파일 다운로드
+    @GetMapping("/applyDownload/{id}")
+    public ResponseEntity<UrlResource> applyDownloadAttach(@PathVariable Integer id) throws MalformedURLException {
+
+        Apply apply_file = applyService.applyView(id);
+        String apply_fileName = apply_file.getFilename();
+        String apply_orgName = apply_fileName.substring(apply_fileName.lastIndexOf("."));
+
+        UrlResource resource = new UrlResource("file:" + apply_file.getFilepath());
+        String encodedFileName = UriUtils.encode(apply_fileName, StandardCharsets.UTF_8);
 
         // 파일 다운로드 대화상자가 뜨도록 하는 헤더를 설정해주는 것
         // Content-Disposition 헤더에 attachment; filename="업로드 파일명" 값을 준다.
@@ -184,5 +202,12 @@ public class CareerController {
         return "redirect:/boardSetting";
      }
 
+    @GetMapping("/applySetting")
+    public String adminApplySetting(Model model){
+
+        model.addAttribute("applyList", applyService.applyList());
+
+        return "/adminView/adminApplySetting";
+    }
 
 }
