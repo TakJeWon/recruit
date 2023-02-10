@@ -1,5 +1,7 @@
 package com.castis.career.controller;
 
+import com.castis.career.dto.MailAttachedDTO;
+import com.castis.career.dto.MailDTO;
 import com.castis.career.entity.Apply;
 import com.castis.career.entity.Board;
 import com.castis.career.service.ApplyService;
@@ -22,6 +24,7 @@ import org.springframework.web.util.UriUtils;
 import org.thymeleaf.spring5.processor.SpringInputRadioFieldTagProcessor;
 
 import javax.annotation.Resource;
+import javax.mail.MessagingException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Path;
 import java.io.Console;
@@ -40,7 +43,6 @@ public class CareerController {
 
     @Autowired
     private ApplyService applyService;
-
 
     @GetMapping("/")
     public String root() {
@@ -158,8 +160,29 @@ public class CareerController {
     @PostMapping("/apply/success/{jobId}")
     public String applySuccess(@PathVariable("jobId") Integer jobId,
                                Apply apply,
-                               MultipartFile file) throws IOException {
+                               MultipartFile file) throws IOException, MessagingException {
 
+        //공고 관리자에게 메일 보내기 (첨부파일 포함)
+//        MailAttachedDTO mail = new MailAttachedDTO();
+//
+//        mail.setAddress(apply.getEmail());
+//        mail.setFileName(apply.getFilename());
+//        mail.setContent("캐스트이즈 채용공고에 지원해주셔서 감사합니다.");
+//        mail.setTitle("[캐스트이즈]지원해주셔서 감사합니다.");
+//        mail.setCcAddress("taknineball@castis.com");
+//
+//        applyService.sendAttachedEmail(mail, file);
+
+        //공고 지원자에게 메일 보내기 (첨부파일 없음)
+        MailDTO applyMail = new MailDTO();
+
+        applyMail.setAddress(apply.getEmail());
+        applyMail.setContent("캐스트이즈 채용공고에 지원해주셔서 감사합니다.");
+        applyMail.setTitle("[캐스트이즈]지원해주셔서 감사합니다.");
+
+        applyService.sendEmail(applyMail);
+
+        //공고 DB 저장
         applyService.applyWrite(jobId, apply, file);
 
         return "redirect:/jobs";
