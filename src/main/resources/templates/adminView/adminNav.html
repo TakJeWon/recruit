@@ -12,7 +12,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" th:href="@{/admin}">
+        <a class="nav-link" th:href="@{/admin/dashboard}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -27,7 +27,7 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{/boardSetting}">
+        <a class="nav-link collapsed" th:href="@{/admin/boardSetting}">
             <i class="fas fa-fw fa-cog"></i>
             <span>공고목록 관리</span>
         </a>
@@ -35,7 +35,7 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" th:href="@{/register}">
+        <a class="nav-link collapsed" th:href="@{/admin/register}">
             <i class="fas fa-fw fa-wrench"></i>
             <span>새로운 공고 등록</span>
         </a>
@@ -54,6 +54,26 @@
         <a class="nav-link" th:href="@{/applySetting}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>지원내역</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        계정 관리
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{/admin/memberList}">
+            <i class="fas fa-fw fa-user"></i>
+            <span>ADMIN 계정 목록</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" th:href="@{/admin/addMember}">
+            <i class="fas fa-fw fa-cogs"></i>
+            <span>ADMIN 계정 추가</span></a>
     </li>
 
     <!-- Divider -->
