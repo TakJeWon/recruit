@@ -56,7 +56,7 @@ public class AdminController {
 
     @GetMapping("/dashboard")
     public String adminPage(){
-        return "/adminView/adminDashboard";
+        return "adminView/adminDashboard";
     }
 
     @GetMapping("/boardSetting")
