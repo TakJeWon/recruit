@@ -135,6 +135,30 @@ public class AdminController {
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,contentDisposition).body(resource);
     }
 
+
+    @GetMapping("/applySetting")
+    public String adminApplySetting(Model model){
+
+        model.addAttribute("applyList", applyService.applyList());
+
+        return "/adminView/adminApplySetting";
+    }
+
+    @GetMapping("/applyMailSetting")
+    public String adminApplyMailSetting(Model model){
+
+//        model.addAttribute("applyList", applyService.applyList());
+
+        return "/adminView/adminApplyMailSetting";
+    }
+
+    @GetMapping("/apply/delete")
+    public String adminApplyDelete(Integer id){
+        applyService.applyDelete(id);
+
+        return "redirect:/admin/applySetting";
+    }
+
     @GetMapping("/memberList")
     public String memberListView(Model model){
 
@@ -152,6 +176,13 @@ public class AdminController {
     public String createMember(Member member){
 
         memberService.save(member);
+        return "redirect:/admin/memberList";
+    }
+
+    @GetMapping("/member/delete")
+    public String adminMemberDelete(Long id){
+        memberService.memberDelete(id);
+
         return "redirect:/admin/memberList";
     }
 

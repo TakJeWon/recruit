@@ -135,12 +135,5 @@ public class CareerController {
         return "redirect:/jobs";
     }
 
-    @GetMapping("/applySetting")
-    public String adminApplySetting(Model model){
-
-        model.addAttribute("applyList", applyService.applyList());
-
-        return "/adminView/adminApplySetting";
-    }
 
 }

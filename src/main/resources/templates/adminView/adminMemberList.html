@@ -22,7 +22,7 @@
                         <td th:text="${member.email}">Tiger Nixon</td>
                         <td th:text="${member.role}">Tiger Nixon</td>
                         <td>
-                            <a class="btn btn-danger btn-circle ms-2">
+                            <a class="btn btn-danger btn-circle ms-2" th:href="@{/admin/member/delete(id=${member.id})}">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>

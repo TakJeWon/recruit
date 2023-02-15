@@ -30,7 +30,7 @@
                             <a th:text="${apply.filename}" th:href="|/admin/applyDownload/${apply.id}|"></a>
                         </td>
                         <td>
-                            <a class="btn btn-danger btn-circle ms-2">
+                            <a class="btn btn-danger btn-circle ms-2" th:href="@{/admin/apply/delete(id=${apply.id})}">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>

@@ -55,4 +55,7 @@ public class MemberService implements UserDetailsService {
 
         memberRepository.save(member);
     }
+
+    //member 삭제
+    public void memberDelete(Long id) { memberRepository.deleteById(id); }
 }
