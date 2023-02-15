@@ -83,37 +83,53 @@ public class ApplyService {
     public Apply applyView(Integer id) { return applyRepository.findById(id).get(); }
 
     //지원 접수 시 메일 전송
-    public void sendAttachedEmail(MailAttachedDTO mailDTO, MultipartFile file) throws MessagingException, IOException {
+    public void sendAttachedEmail(Apply apply, MultipartFile file) throws MessagingException, IOException {
+
+        MailAttachedDTO mail = new MailAttachedDTO();
+
+        mail.setAddress("taknineball@castis.com");
+        mail.setFileName(apply.getFilename());
+        mail.setContent("캐스트이즈 채용공고에 지원자가 있습니다. ADMIN 게시판을 확인해주세요.");
+        mail.setTitle("[CASTIS recruit] 지원자가 있습니다.");
+        mail.setCcAddress("taknineball@castis.com");
+
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
         //메일 제목 설정
-        helper.setSubject(mailDTO.getTitle());
+        helper.setSubject(mail.getTitle());
 
         //참조자 설정
-        helper.setCc(mailDTO.getCcAddress());
+        helper.setCc(mail.getCcAddress());
         helper.setFrom(from);
 
-        helper.setText(mailDTO.getContent(), false);
+        helper.setText(mail.getContent(), false);
 
         //첨부 파일 설정
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         helper.addAttachment(MimeUtility.encodeText(fileName, "UTF-8", "B"), new ByteArrayResource(IOUtils.toByteArray(file.getInputStream())));
 
-        helper.setTo(mailDTO.getAddress());
+        helper.setTo(mail.getAddress());
         emailSender.send(message);
     }
 
-    public void sendEmail(MailDTO mailDTO) throws MessagingException, IOException {
+    public void sendEmail(Apply apply) throws MessagingException, IOException {
+
+        MailDTO applyMail = new MailDTO();
+
+        applyMail.setAddress(apply.getEmail());
+        applyMail.setContent("캐스트이즈 채용공고에 지원해주셔서 감사합니다.");
+        applyMail.setTitle("[CASTIS] 지원해주셔서 감사합니다.");
+
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
         //메일 제목 설정
-        helper.setSubject(mailDTO.getTitle());
+        helper.setSubject(applyMail.getTitle());
         helper.setFrom(from);
-        helper.setText(mailDTO.getContent(), true);
+        helper.setText(applyMail.getContent(), true);
 
-        helper.setTo(mailDTO.getAddress());
+        helper.setTo(applyMail.getAddress());
         emailSender.send(message);
     }
 }

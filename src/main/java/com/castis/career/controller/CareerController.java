@@ -124,24 +124,10 @@ public class CareerController {
                                MultipartFile file) throws IOException, MessagingException {
 
         //공고 관리자에게 메일 보내기 (첨부파일 포함)
-//        MailAttachedDTO mail = new MailAttachedDTO();
-//
-//        mail.setAddress(apply.getEmail());
-//        mail.setFileName(apply.getFilename());
-//        mail.setContent("캐스트이즈 채용공고에 지원해주셔서 감사합니다.");
-//        mail.setTitle("[캐스트이즈]지원해주셔서 감사합니다.");
-//        mail.setCcAddress("taknineball@castis.com");
-//
-//        applyService.sendAttachedEmail(mail, file);
+        applyService.sendAttachedEmail(apply, file);
 
         //공고 지원자에게 메일 보내기 (첨부파일 없음)
-        MailDTO applyMail = new MailDTO();
-
-        applyMail.setAddress(apply.getEmail());
-        applyMail.setContent("캐스트이즈 채용공고에 지원해주셔서 감사합니다.");
-        applyMail.setTitle("[캐스트이즈]지원해주셔서 감사합니다.");
-
-        applyService.sendEmail(applyMail);
+        applyService.sendEmail(apply);
 
         //공고 DB 저장
         applyService.applyWrite(jobId, apply, file);
