@@ -49,12 +49,12 @@ public class BoardService {
     }
 
     //공고 삭제
-    public void boardDelete(Integer id){
+    public void boardDelete(Long id){
         boardRepository.deleteById(id);
     }
 
     //특정 게시글 불러오기
-    public Board boardView(Integer id) { return boardRepository.findById(id).get(); }
+    public Board boardView(Long id) { return boardRepository.findById(id).get(); }
 
 }
 

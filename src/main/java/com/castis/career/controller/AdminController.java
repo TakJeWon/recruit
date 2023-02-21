@@ -77,18 +77,18 @@ public class AdminController {
 
         boardService.write(board, file);
 
-        return "redirect:/boardSetting";
+        return "redirect:/admin/boardSetting";
     }
 
     @GetMapping("/register/delete")
-    public String adminBoardDelete(Integer id){
+    public String adminBoardDelete(Long id){
         boardService.boardDelete(id);
 
-        return "redirect:/boardSetting";
+        return "redirect:/admin/boardSetting";
     }
 
     @GetMapping("/boardView")
-    public String adminBoardView( Integer id, Model model){
+    public String adminBoardView( Long id, Model model){
 
         model.addAttribute("board", boardService.boardView(id));
 
@@ -96,7 +96,7 @@ public class AdminController {
     }
 
     @PostMapping("/register/update/{id}")
-    public String adminBoardUpdate(@PathVariable("id") Integer id,
+    public String adminBoardUpdate(@PathVariable("id") Long id,
                                    Board board,
                                    MultipartFile file) throws IOException {
 
@@ -114,12 +114,12 @@ public class AdminController {
 
         boardService.write(boardTemp, file);
 
-        return "redirect:/boardSetting";
+        return "redirect:/admin/boardSetting";
     }
 
     // 지원서 ; 첨부 파일 다운로드
     @GetMapping("/applyDownload/{id}")
-    public ResponseEntity<UrlResource> applyDownloadAttach(@PathVariable Integer id) throws MalformedURLException {
+    public ResponseEntity<UrlResource> applyDownloadAttach(@PathVariable Long id) throws MalformedURLException {
 
         Apply apply_file = applyService.applyView(id);
         String apply_fileName = apply_file.getFilename();
@@ -153,7 +153,7 @@ public class AdminController {
     }
 
     @GetMapping("/apply/delete")
-    public String adminApplyDelete(Integer id){
+    public String adminApplyDelete(Long id){
         applyService.applyDelete(id);
 
         return "redirect:/admin/applySetting";

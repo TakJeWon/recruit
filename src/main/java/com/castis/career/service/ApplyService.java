@@ -51,7 +51,7 @@ public class ApplyService {
 
 
     //지원서 저장
-    public void applyWrite(Integer jobId, Apply apply, MultipartFile file) throws IOException {
+    public void applyWrite(Long jobId, Apply apply, MultipartFile file) throws IOException {
         Board board = boardRepository.findById(jobId).orElse(null);
 
         if (!file.getOriginalFilename().equals("")){
@@ -77,10 +77,10 @@ public class ApplyService {
     public List<Apply> applyList(){ return applyRepository.findAll(); }
 
     //지원서 삭제
-    public void applyDelete(Integer id) { applyRepository.deleteById(id); }
+    public void applyDelete(Long id) { applyRepository.deleteById(id); }
 
     //특정 지원서 불러오기
-    public Apply applyView(Integer id) { return applyRepository.findById(id).get(); }
+    public Apply applyView(Long id) { return applyRepository.findById(id).get(); }
 
     //지원 접수 시 메일 전송
     public void sendAttachedEmail(Apply apply, MultipartFile file) throws MessagingException, IOException {

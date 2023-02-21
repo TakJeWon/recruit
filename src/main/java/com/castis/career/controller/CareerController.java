@@ -80,7 +80,7 @@ public class CareerController {
     }
 
     @GetMapping("/jobDetail")
-    public String jobDetailPage( Integer id, Model model){
+    public String jobDetailPage( Long id, Model model){
 
         model.addAttribute("jobDetails", boardService.boardView(id));
 
@@ -89,7 +89,7 @@ public class CareerController {
 
     // 공고 ; 첨부 파일 다운로드
     @GetMapping("/download/{id}")
-    public ResponseEntity<UrlResource> downloadAttach(@PathVariable Integer id) throws MalformedURLException {
+    public ResponseEntity<UrlResource> downloadAttach(@PathVariable Long id) throws MalformedURLException {
 
         Board board_file = boardService.boardView(id);
         String board_fileName = board_file.getFilename();
@@ -106,7 +106,7 @@ public class CareerController {
     }
 
     @GetMapping("/jobApply")
-    public String jobApplyPage(Integer id, Model model){
+    public String jobApplyPage(Long id, Model model){
 
         model.addAttribute("jobDetails", boardService.boardView(id));
 
@@ -119,7 +119,7 @@ public class CareerController {
     }
 
     @PostMapping("/apply/success/{jobId}")
-    public String applySuccess(@PathVariable("jobId") Integer jobId,
+    public String applySuccess(@PathVariable("jobId") Long jobId,
                                Apply apply,
                                MultipartFile file) throws IOException, MessagingException {
 
