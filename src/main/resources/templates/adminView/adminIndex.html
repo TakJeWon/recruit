@@ -18,6 +18,7 @@
             rel="stylesheet">
 
     <!-- Custom styles for this template-->
+    <link th:href="@{/css/sb-admin-2.css}" rel="stylesheet">
     <link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
 
     <!-- TinyMCE CDN -->
@@ -32,7 +33,7 @@
             plugins: 'lists, link, image, media',
             toolbar: 'undo redo | styleselect | fontsizeselect | bold italic strikethrough blockquote bullist numlist backcolor| alignleft aligncenter alignright alignjustify | outdent indent | link image media | removeformat help',
             fontsize_formats: "8pt 9pt 10pt 11pt 12pt 14pt 18pt 24pt 30pt 36pt 48pt 60pt 72pt 96pt",
-            content_style: "body { font-size: 14pt; }",
+            content_style: "body { font-size: 11pt; }",
             menubar: true,
         });
     </script>
@@ -88,15 +89,15 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">로그아웃 하시겠습니까?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-body">Admin 계정에서 로그아웃 하시겠습니까?</div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" th:href="@{/admin/logout}">Logout</a>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+                <a class="btn btn-primary" th:href="@{/admin/logout}">로그아웃</a>
             </div>
         </div>
     </div>

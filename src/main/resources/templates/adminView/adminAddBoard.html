@@ -8,44 +8,51 @@
 
     <div class="card shadow mb-4">
         <form class="card-body m-3" action="/admin/register/success" method="post" enctype="multipart/form-data">
-            <div class="d-flex justify-content-start mb-3">
-                <span style="width: 150px;">공고 제목 *</span>
-                <input class="form-control" style="width: 70%" type="text" name="title">
+            <div class="d-flex justify-content-start mb-3 applyForm">
+                <span style="width: 150px;">공고 제목
+                    <sup>*</sup></span>
+                <input class="apply-form-control-lg"  type="text" name="title">
             </div>
-            <div class="d-flex justify-content-start mb-3">
-                <span style="width: 150px;">공고 기간 *</span>
-                <div class="d-flex justify-content-start">
+            <div class="d-flex justify-content-start mb-3 applyForm">
+                <span style="width: 150px;">공고 기간
+                    <sup>*</sup></span>
+                <div class="d-flex justify-content-start applyForm">
                     <input type="date" id="startDatePicker" class="form-control me-3" name="start_date">
                     <div class="px-3 d-flex align-content-center"> ~ </div>
                     <input type="date" id="endDatePicker" class="form-control" name="end_date">
                 </div>
             </div>
-            <div class="d-flex justify-content-start mb-3">
+            <div class="d-flex justify-content-start mb-3 applyForm">
                 <span style="width: 150px;">추가 사항</span>
                 <div class="d-flex flex-column" style="width: 70%">
-                    <div class="d-flex justify-content-between mb-3">
-                        <span style="width: 150px;">경력 *</span>
-                        <input class="form-control" style="width: 50%" type="text" name="experience">
-                        <span style="width: 150px; margin-left: 30px;">학력 *</span>
-                        <input class="form-control" style="width: 50%" type="text" name="education">
+                    <div class="d-flex justify-content-between mb-3 applyForm">
+                        <span style="width: 100px;">경력
+                    <sup>*</sup></span>
+                        <input class="apply-form-control-sm me-5" type="text" name="experience">
+                        <span style="width: 100px;">학력
+                    <sup>*</sup></span>
+                        <input class="apply-form-control-sm" type="text" name="education">
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <span style="width: 150px;">근무 형태 *</span>
-                        <input class="form-control" style="width: 50%" type="text" name="type">
-                        <span style="width: 150px; margin-left: 30px;">근무지 *</span>
-                        <input class="form-control" style="width: 50%" type="text" name="location">
+                    <div class="d-flex justify-content-between applyForm">
+                        <span style="width: 100px;">근무 형태
+                    <sup>*</sup></span>
+                        <input class="apply-form-control-sm me-5" type="text" name="type">
+                        <span style="width: 100px;">근무지
+                    <sup>*</sup></span>
+                        <input class="apply-form-control-sm" type="text" name="location">
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-start mb-3">
-                <span style="width: 150px;">공고 내용</span>
-                <textarea class="form-control"
+            <div class="d-flex justify-content-start mb-3 applyForm">
+                <span style="width: 150px;">공고 내용
+                    <sup>*</sup></span>
+                <textarea class="apply-form-control-lg"
                           id="editor"
                           name="content"
                           style="height: 500px; width: 90%">
                 </textarea>
             </div>
-            <div class="d-flex justify-content-start mb-3">
+            <div class="d-flex justify-content-start mb-3 applyForm">
                 <span style="width: 150px;">첨부 파일 </span>
                 <input class="form-control" type="file" style="width: 80%", name="file">
             </div>
@@ -53,7 +60,7 @@
                 <button type="submit"
                         class="btn btn-sm btn-primary"
                         style="height: 40px; width: 100px;"
-                >작성</button>
+                >등록</button>
             </div>
         </form>
     </div>

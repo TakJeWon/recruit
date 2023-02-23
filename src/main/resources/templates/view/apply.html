@@ -24,23 +24,26 @@
             지원하기
         </div>
         <div class="card shadow" style="margin-bottom: 50px">
-            <form class="card-body m-5" th:action="@{/apply/success/{jobId}(jobId = ${jobDetails.id})}" method="post" enctype="multipart/form-data">
-                <div class="d-flex justify-content-start mb-3">
+            <form class="apply-card m-5" th:action="@{/apply/success/{jobId}(jobId = ${jobDetails.id})}" method="post" enctype="multipart/form-data">
+                <div class="d-flex justify-content-start mb-3 applyForm ">
                     <span style="width: 150px;">지원 공고</span>
-                    <input class="form-control" style="width: 70%" type="text" th:value="${jobDetails.title}" disabled="true">
+                    <input class="apply-form-control-lg" type="text" th:value="${jobDetails.title}" disabled="true">
                 </div>
-                <div class="d-flex justify-content-start mb-3">
-                    <span style="width: 150px;">이름</span>
-                    <input class="form-control" style="width: 30%" type="text" name="name">
+                <div class="d-flex justify-content-start mb-3 applyForm">
+                    <span style="width: 150px;">이름
+                    <sup>*</sup></span>
+                    <input class="apply-form-control-sm" type="text" name="name">
                 </div>
-                <div class="d-flex justify-content-start mb-3">
-                    <span style="width: 150px;">생년월일</span>
-                    <input class="form-control" style="width: 30%" type="text" name="birthday" placeholder="예) 1997.05.01">
+                <div class="d-flex justify-content-start mb-3 applyForm">
+                    <span style="width: 150px;">생년월일
+                    <sup>*</sup></span>
+                    <input class="apply-form-control-sm" type="text" name="birthday" placeholder="예) 1997.05.01">
                 </div>
-                <div class="d-flex justify-content-start mb-3">
-                    <span style="width: 150px;">이메일</span>
+                <div class="d-flex justify-content-start mb-3 applyForm">
+                    <span style="width: 150px;">이메일
+                    <sup>*</sup></span>
                     <div>
-                        <input class="form-control" style="width: 100%" type="email" name="email">
+                        <input class="apply-form-control-lg" type="email" name="email">
                         <div class="form-detail">
                             *작성해주신 이메일로 지원 완료 결과를 보내드립니다.<br>
                             *Yahoo, Daum 등 전달되지 않는 메일 형식이 있을 수 있습니다.<br>
@@ -48,19 +51,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="d-flex justify-content-start mb-3">
-                    <span style="width: 150px;">첨부파일</span>
+                <div class="d-flex justify-content-start mb-3 applyForm">
+                    <span style="width: 150px;">첨부파일
+                    <sup>*</sup></span>
                     <input class="form-control" type="file" style="width: 80%" name="file">
                 </div>
                 <div class="d-flex justify-content-center my-3">
                     <button th:href="@{/jobs}"
-                            class="btn btn-sm me-3"
+                            class="btn btn-sm me-3 border-1"
                             style="height: 40px; width: 100px;"
                     >목록으로</button>
                     <button type="submit"
                             class="btn btn-sm btn-primary"
                             style="height: 40px; width: 100px;"
-                    >작성</button>
+                    >지원하기</button>
                 </div>
             </form>
         </div>
