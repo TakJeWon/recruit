@@ -4,6 +4,7 @@ import com.castis.career.dto.MailAttachedDTO;
 import com.castis.career.dto.MailDTO;
 import com.castis.career.entity.Apply;
 import com.castis.career.entity.Board;
+import com.castis.career.entity.MailInfo;
 import com.castis.career.repository.ApplyRepository;
 import com.castis.career.repository.BoardRepository;
 import groovy.util.logging.Slf4j;
@@ -49,6 +50,9 @@ public class ApplyService {
 
     private final JavaMailSender emailSender;
 
+    @Autowired
+    private MailInfoService mailInfoService;
+
 
     //지원서 저장
     public void applyWrite(Long jobId, Apply apply, MultipartFile file) throws IOException {
@@ -86,11 +90,12 @@ public class ApplyService {
     public void sendAttachedEmail(Apply apply, MultipartFile file) throws MessagingException, IOException {
 
         MailAttachedDTO mail = new MailAttachedDTO();
+        MailInfo mailInfo = mailInfoService.mailInfo("admin");
 
         mail.setAddress("taknineball@castis.com");
         mail.setFileName(apply.getFilename());
-        mail.setContent("캐스트이즈 채용공고에 지원자가 있습니다. ADMIN 게시판을 확인해주세요.");
-        mail.setTitle("[CASTIS recruit] 지원자가 있습니다.");
+        mail.setContent(mailInfo.getContent());
+        mail.setTitle(mailInfo.getTitle());
         mail.setCcAddress("taknineball@castis.com");
 
         MimeMessage message = emailSender.createMimeMessage();
@@ -117,9 +122,11 @@ public class ApplyService {
 
         MailDTO applyMail = new MailDTO();
 
+        MailInfo mailInfo = mailInfoService.mailInfo("apply");
+
         applyMail.setAddress(apply.getEmail());
-        applyMail.setContent("캐스트이즈 채용공고에 지원해주셔서 감사합니다.");
-        applyMail.setTitle("[CASTIS] 지원해주셔서 감사합니다.");
+        applyMail.setContent(mailInfo.getContent());
+        applyMail.setTitle(mailInfo.getTitle());
 
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);

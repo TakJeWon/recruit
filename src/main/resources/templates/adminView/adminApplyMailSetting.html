@@ -1,30 +1,30 @@
 <html layout:decorate="~{/adminView/adminIndex}">
-<div layout:fragment="adminContent" class="container-fluid">
+<div layout:fragment="adminContent" class="container-fluid" xmlns:th="http://www.thymeleaf.org">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">지원 메일 설정</h1>
+    <h1 class="h3 mb-2 text-gray-800">지원자 메일 설정</h1>
     <p class="mb-4">지원자가 지원하였을 때 보낼 메일을 설정할 수 있습니다.</p>
 
-
     <div class="card shadow mb-4">
-        <form class="card-body m-3" action="/admin" method="post" enctype="multipart/form-data">
+        <form class="card-body m-3" action="/admin/applyMail/modify" method="post">
             <div class="d-flex justify-content-start mb-3">
                 <span style="width: 150px;">메일 제목</span>
-                <input class="form-control" style="width: 70%" type="text" name="title">
+                <input class="form-control" style="width: 70%" type="text" name="title" th:value="${applyMailInfo.title}">
             </div>
             <div class="d-flex justify-content-start mb-3">
                 <span style="width: 150px;">메일 내용</span>
                 <textarea class="form-control"
                           id="editor"
                           name="content"
-                          style="height: 500px; width: 90%">
+                          style="height: 500px; width: 90%"
+                          th:text="${applyMailInfo.content}">
                 </textarea>
             </div>
             <div class="d-flex justify-content-end ">
                 <button type="submit"
                         class="btn btn-sm btn-primary"
                         style="height: 40px; width: 100px;"
-                >작성</button>
+                >수정</button>
             </div>
         </form>
     </div>

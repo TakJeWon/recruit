@@ -24,7 +24,7 @@
             지원하기
         </div>
         <div class="card shadow" style="margin-bottom: 50px">
-            <form class="card-body m-3" th:action="@{/apply/success/{jobId}(jobId = ${jobDetails.id})}" method="post" enctype="multipart/form-data">
+            <form class="card-body m-5" th:action="@{/apply/success/{jobId}(jobId = ${jobDetails.id})}" method="post" enctype="multipart/form-data">
                 <div class="d-flex justify-content-start mb-3">
                     <span style="width: 150px;">지원 공고</span>
                     <input class="form-control" style="width: 70%" type="text" th:value="${jobDetails.title}" disabled="true">
@@ -65,42 +65,7 @@
             </form>
         </div>
     </div>
+
 </article>
-<!-- Footer-->
-<footer layout:fragment="footer" class="border-top">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <ul class="list-inline text-center">
-                    <li class="list-inline-item">
-                        <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                                    </span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                                    </span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                        </a>
-                    </li>
-                </ul>
-                <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2022</div>
-            </div>
-        </div>
-    </div>
-</footer>
 
 </html>

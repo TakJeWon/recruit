@@ -2,9 +2,11 @@ package com.castis.career.controller;
 
 import com.castis.career.entity.Apply;
 import com.castis.career.entity.Board;
+import com.castis.career.entity.MailInfo;
 import com.castis.career.entity.Member;
 import com.castis.career.service.ApplyService;
 import com.castis.career.service.BoardService;
+import com.castis.career.service.MailInfoService;
 import com.castis.career.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.UrlResource;
@@ -36,6 +38,9 @@ public class AdminController {
 
     @Autowired
     private MemberService memberService;
+
+    @Autowired
+    private MailInfoService mailInfoService;
 
     @GetMapping("/")
     public String getLoginForm(){
@@ -147,9 +152,22 @@ public class AdminController {
     @GetMapping("/applyMailSetting")
     public String adminApplyMailSetting(Model model){
 
-//        model.addAttribute("applyList", applyService.applyList());
+        model.addAttribute("applyMailInfo", mailInfoService.mailInfo("apply"));
+        model.addAttribute("adminMailInfo", mailInfoService.mailInfo("admin"));
 
         return "/adminView/adminApplyMailSetting";
+    }
+
+    @PostMapping("/applyMail/modify")
+    public String adminApplyMailModify(MailInfo mailInfo) throws IOException {
+
+        MailInfo mailInfoTemp = mailInfoService.mailInfo("apply");
+        mailInfoTemp.setTitle(mailInfo.getTitle());
+        mailInfoTemp.setContent(mailInfo.getContent());
+
+        mailInfoService.write(mailInfoTemp);
+
+        return "redirect:/admin/applyMailSetting";
     }
 
     @GetMapping("/apply/delete")

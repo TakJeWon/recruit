@@ -1,41 +1,24 @@
 package com.castis.career.controller;
 
-import com.castis.career.dto.MailAttachedDTO;
-import com.castis.career.dto.MailDTO;
 import com.castis.career.entity.Apply;
 import com.castis.career.entity.Board;
-import com.castis.career.entity.Member;
 import com.castis.career.service.ApplyService;
 import com.castis.career.service.BoardService;
 import com.castis.career.service.MemberService;
-import org.codehaus.groovy.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriUtils;
-import org.thymeleaf.spring5.processor.SpringInputRadioFieldTagProcessor;
 
-import javax.annotation.Resource;
 import javax.mail.MessagingException;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.Path;
-import java.io.Console;
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Paths;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/")
@@ -132,7 +115,7 @@ public class CareerController {
         //공고 DB 저장
         applyService.applyWrite(jobId, apply, file);
 
-        return "redirect:/jobs";
+        return "/view/apply_success";
     }
 
 

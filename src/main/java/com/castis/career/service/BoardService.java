@@ -2,8 +2,10 @@ package com.castis.career.service;
 
 import com.castis.career.entity.Board;
 import com.castis.career.repository.BoardRepository;
+import net.bytebuddy.TypeCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -45,7 +47,7 @@ public class BoardService {
 
     //공고 목록 불러오기
     public List<Board> boardList() {
-        return boardRepository.findAll();
+        return boardRepository.findAll(Sort.by(Sort.Direction.DESC, "Id"));
     }
 
     //공고 삭제
