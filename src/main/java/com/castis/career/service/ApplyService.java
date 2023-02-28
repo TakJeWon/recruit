@@ -42,7 +42,7 @@ public class ApplyService {
     @Autowired
     private BoardRepository boardRepository;
 
-    @Value("${file.dir}")
+    @Value("${apply.file.dir}")
     private String fileDir;
 
     @Value("${spring.mail.username}")

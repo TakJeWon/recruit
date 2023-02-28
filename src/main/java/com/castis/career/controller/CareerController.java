@@ -4,6 +4,7 @@ import com.castis.career.entity.Apply;
 import com.castis.career.entity.Board;
 import com.castis.career.service.ApplyService;
 import com.castis.career.service.BoardService;
+import com.castis.career.service.MailInfoService;
 import com.castis.career.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.UrlResource;
@@ -32,7 +33,10 @@ public class CareerController {
 
     @Autowired
     private MemberService memberService;
-//
+
+    @Autowired
+    private MailInfoService mailInfoService;
+
     @GetMapping("/")
     public String rootRecruit() {
         return "redirect:/home";
@@ -92,6 +96,7 @@ public class CareerController {
     public String jobApplyPage(Long id, Model model){
 
         model.addAttribute("jobDetails", boardService.boardView(id));
+        model.addAttribute("successMessageInfo", mailInfoService.mailInfo("success_msg"));
 
         return "/view/apply";
     }
@@ -104,7 +109,8 @@ public class CareerController {
     @PostMapping("/apply/success/{jobId}")
     public String applySuccess(@PathVariable("jobId") Long jobId,
                                Apply apply,
-                               MultipartFile file) throws IOException, MessagingException {
+                               MultipartFile file,
+                               Model model) throws IOException, MessagingException {
 
         //공고 관리자에게 메일 보내기 (첨부파일 포함)
         applyService.sendAttachedEmail(apply, file);
@@ -115,6 +121,7 @@ public class CareerController {
         //공고 DB 저장
         applyService.applyWrite(jobId, apply, file);
 
+        model.addAttribute("successMessageInfo", mailInfoService.mailInfo("success_msg"));
         return "/view/apply_success";
     }
 

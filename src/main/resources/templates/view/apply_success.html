@@ -1,5 +1,5 @@
 <html layout:decorate="~{index}">
-<header layout:fragment="header" class="masthead2">
+<header layout:fragment="header" class="masthead2" xmlns:th="http://www.thymeleaf.org">
     <div class="container position-relative px-4 px-lg-5">
     </div>
 </header>
@@ -7,19 +7,12 @@
 <article layout:fragment="content" class="mb-4">
     <div class="container">
         <div class="d-flex justify-content-start m-3 mb-5 custom_board_text"
-             style="font-weight: 800; font-size: 30px">
+             style="font-weight: 800; font-size: 30px"
+             th:text="${successMessageInfo.title}">
             지원 완료
         </div>
         <div class="card shadow" style="margin-bottom: 50px">
-            <div class="m-5">
-                <span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">지원해주셔서 감사드립니다!</span>
-                <br><br>
-                <span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">정상적으로 지원 접수가 되었을 경우, 작성해주신 주소로 이메일을 보내드립니다.</span><br>
-                <span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">첨부해주신 지원서를 확인 한 후, 담당자가 연락 드리도록 하겠습니다.</span><br>
-                <span style="font-size: 10pt; font-family: arial, helvetica, sans-serif;">담당자 연락처 ( email : taknineball@castis.com )</span>
-                <br><br>
-                <span style="font-family: arial, helvetica, sans-serif;"><strong><span style="font-size: 12pt; color: rgb(35, 111, 161);">CASTIS에서 당신을 만날 날을 기대하겠습니다!</span></strong></span>
-                <br><br>
+            <div class="m-5" th:utext="${successMessageInfo.content}">
             </div>
         </div>
     </div>

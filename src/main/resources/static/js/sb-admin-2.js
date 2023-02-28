@@ -54,3 +54,10 @@
   });
 
 })(jQuery); // End of use strict
+
+let member = false
+
+function modify(name) { // 7.
+  console.log(member)
+  member = !member
+}

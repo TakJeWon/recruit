@@ -153,9 +153,16 @@ public class AdminController {
     public String adminApplyMailSetting(Model model){
 
         model.addAttribute("applyMailInfo", mailInfoService.mailInfo("apply"));
-        model.addAttribute("adminMailInfo", mailInfoService.mailInfo("admin"));
 
         return "/adminView/adminApplyMailSetting";
+    }
+
+    @GetMapping("/successMsgSetting")
+    public String adminSuccessMessageSetting(Model model){
+
+        model.addAttribute("successMessageInfo", mailInfoService.mailInfo("success_msg"));
+
+        return "/adminView/adminApplySuccessSetting";
     }
 
     @PostMapping("/applyMail/modify")
@@ -168,6 +175,18 @@ public class AdminController {
         mailInfoService.write(mailInfoTemp);
 
         return "redirect:/admin/applyMailSetting";
+    }
+
+    @PostMapping("/successMsg/modify")
+    public String adminSuccessMsgModify(MailInfo mailInfo) throws IOException {
+
+        MailInfo mailInfoTemp = mailInfoService.mailInfo("success_msg");
+        mailInfoTemp.setTitle(mailInfo.getTitle());
+        mailInfoTemp.setContent(mailInfo.getContent());
+
+        mailInfoService.write(mailInfoTemp);
+
+        return "redirect:/admin/successMsgSetting";
     }
 
     @GetMapping("/apply/delete")
