@@ -4,8 +4,11 @@
 
 </header>
 
-<div layout:fragment="content" class="container px-4">
-    <div class="post-preview d-flex flex-column justify-content-center" style="height: 700px">
+<div layout:fragment="content" class="container-fluid"
+     style="background-image: url('img/asset/manu/2.svg');
+     background-position: right center;
+     background-repeat: no-repeat; padding-left: 250px; padding-right: 300px;">
+    <div class="post-preview d-flex flex-column justify-content-center" style="height: 900px;">
         <h1 class="post-title mb-3" style="font-size: 60px;">Man must explore, <br> and this is exploration <br>  at its greatest</h1>
         <p class="post-meta" style="font-size: 20px;">
             Posted by
@@ -13,6 +16,9 @@
             on September 24, 2022
         </p>
     </div>
+<!--    <div>-->
+<!--        <img th:src="@{/img/asset/manu/2.svg}"/>-->
+<!--    </div>-->
 </div>
 
 <footer layout:fragment="footer" class="border-top">

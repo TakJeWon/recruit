@@ -27,3 +27,10 @@ window.addEventListener('DOMContentLoaded', () => {
         scrollPos = currentTop;
     });
 })
+
+// function showLoadingBar(form){
+//     const loadingbar = form.querySelector('#loading-container');
+//     loadingbar.style.display = 'block';
+// }
+
+

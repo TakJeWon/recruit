@@ -24,7 +24,10 @@
             지원하기
         </div>
         <div class="card shadow" style="margin-bottom: 50px">
-            <form class="apply-card m-5" th:action="@{/apply/success/{jobId}(jobId = ${jobDetails.id})}" method="post" enctype="multipart/form-data">
+<!--            <div class="loading-container">-->
+<!--                <div class="loader4"></div>-->
+<!--            </div>-->
+            <form class="apply-card m-5" onsubmit="showLoadingBar(this)" th:action="@{/apply/success/{jobId}(jobId = ${jobDetails.id})}" method="post" enctype="multipart/form-data">
                 <div class="d-flex justify-content-start mb-3 applyForm ">
                     <span style="width: 150px;">지원 공고</span>
                     <input class="apply-form-control-lg" type="text" th:value="${jobDetails.title}" disabled="true">
@@ -66,10 +69,14 @@
                             style="height: 40px; width: 100px;"
                     >지원하기</button>
                 </div>
+
             </form>
         </div>
     </div>
 
 </article>
+
+
+
 
 </html>
