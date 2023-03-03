@@ -17,24 +17,30 @@
 <!--            </div>-->
 <!--            <div class="d-flex m-3 p-2 flex-column justify-content-between" style=" height: 1000px;"></div>-->
 <!--        </div>-->
-        <div class="board d-flex flex-column">
+        <div class="board d-flex flex-column mb-5">
 
             <div class="d-flex justify-content-start m-3 mb-2 custom_board_text"
                  style="font-weight: 800; font-size: 30px">
                 채용 공고
             </div>
             <div class="d-flex justify-content-start m-3 mb-2 custom_board_text"
-                 style="font-weight: 600; font-size: 20px;">
+                 style="font-weight: 600; font-size: 20px;"
+                 th:if="${jobList.size() != 0}">
                 <span th:text="${#lists.size(jobList)}" style="color: #669D67"></span>
                 건의 채용공고가 있습니다
             </div>
-            <div class="d-flex justify-content-end m-3 mb-5">
-<!--                <input class="custom_search_input" placeholder="KEYWORD"/>-->
-<!--                <button class="ms-3 custom_search_button">-->
-<!--                    <span>SEARCH</span>-->
-<!--                </button>-->
+            <div class="d-flex justify-content-start m-3 mb-2 custom_board_text"
+                 style="font-weight: 600; font-size: 20px;"
+                 th:if="${jobList.size() == 0}">
+                현재 진행중인 채용공고가 없습니다.
             </div>
-            <ul class="jobList">
+            <div class="d-flex justify-content-end m-3 mb-5"  th:if="${jobList.size() != 0}">
+                <input class="custom_search_input" placeholder="KEYWORD"/>
+                <button class="ms-3 custom_search_button">
+                    <span>SEARCH</span>
+                </button>
+            </div>
+            <ul class="jobList"  th:if="${jobList.size() != 0}">
                 <li th:each="job : ${jobList}">
                     <a th:href="@{/jobDetail(id=${job.id})}">
                         <div class="custom_board_text custom_board_title mb-3" th:text="${job.title}"> 2023년 상반기 BO(비즈니스오너)/PM(프로젝트매니저) 모집 </div>
@@ -54,6 +60,10 @@
 <!--                    <hr class="my-4" />-->
                 </li>
             </ul>
+            <div class="d-flex flex-column align-items-center mb-5" th:if="${jobList.size() == 0}">
+                <img th:src="@{/img/asset/tech/UnBox.svg}" class="mt-2 d-block w-50 h-50">
+                <p class="culture-content">당신을 위한 일자리를 찾는 중입니다..</p>
+            </div>
         </div>
     </div>
 </article>

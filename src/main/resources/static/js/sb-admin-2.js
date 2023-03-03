@@ -61,3 +61,30 @@ function modify(name) { // 7.
   console.log(member)
   member = !member
 }
+
+$('#save_btn').click(function () {
+  let emailStr = $('#admin_email').val()
+  let passwordStr = $('#admin_password').val()
+
+  if (!emailStr){
+    showNeedPopup("input Writer!")
+    return
+  }
+
+})
+
+$.ajax({
+  url: '/admin/member/success',
+  type: 'POST',
+  contentType: 'application/json', // 요청 컨텐트 타입
+  dataType: 'json', // 응답 데이터 형식 (명시하지 않을 경우 자동으로 추측)
+})
+
+function showNeedPopup(errorString) {
+  Swal.fire({
+    icon: 'error',
+    title: errorString,
+    showConfirmButton: false,
+    timer: 1000
+  })
+}
