@@ -27,7 +27,7 @@ import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "admin")
 public class AdminController {
 
     @Autowired
@@ -42,21 +42,21 @@ public class AdminController {
     @Autowired
     private MailInfoService mailInfoService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String getLoginForm(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         if (!(auth instanceof AnonymousAuthenticationToken)){
 
             //로그인성공
-            return "redirect:/admin/dashboard";
+            return "redirect:admin/dashboard";
         }
-        return "redirect:/admin/adminLogin";
+        return "redirect:admin/adminLogin";
     }
 
     @GetMapping("/adminLogin")
     public String adminLogin(){
-        return "/adminView/adminLogin";
+        return "adminView/adminLogin";
     }
 
     @GetMapping("/dashboard")
@@ -69,27 +69,27 @@ public class AdminController {
 
         model.addAttribute("boardList", boardService.boardList());
 
-        return "/adminView/adminBoardSetting";
+        return "adminView/adminBoardSetting";
     }
 
     @GetMapping("/register")
     public String adminAddBoard(){
-        return "/adminView/adminAddBoard";
+        return "adminView/adminAddBoard";
     }
 
-    @PostMapping("/register/success")
+    @PostMapping("register/success")
     public String adminAddBoardSuccess(Board board, MultipartFile file) throws IOException {
 
         boardService.write(board, file);
 
-        return "redirect:/admin/boardSetting";
+        return "redirect:admin/boardSetting";
     }
 
     @GetMapping("/register/delete")
     public String adminBoardDelete(Long id){
         boardService.boardDelete(id);
 
-        return "redirect:/admin/boardSetting";
+        return "redirect:admin/boardSetting";
     }
 
     @GetMapping("/boardView")
@@ -97,7 +97,7 @@ public class AdminController {
 
         model.addAttribute("board", boardService.boardView(id));
 
-        return "/adminView/adminBoardView";
+        return "adminView/adminBoardView";
     }
 
     @PostMapping("/register/update/{id}")
@@ -119,7 +119,7 @@ public class AdminController {
 
         boardService.write(boardTemp, file);
 
-        return "redirect:/admin/boardSetting";
+        return "redirect:admin/boardSetting";
     }
 
     // 지원서 ; 첨부 파일 다운로드
@@ -146,7 +146,7 @@ public class AdminController {
 
         model.addAttribute("applyList", applyService.applyList());
 
-        return "/adminView/adminApplySetting";
+        return "adminView/adminApplySetting";
     }
 
     @GetMapping("/applyMailSetting")
@@ -154,7 +154,7 @@ public class AdminController {
 
         model.addAttribute("applyMailInfo", mailInfoService.mailInfo("apply"));
 
-        return "/adminView/adminApplyMailSetting";
+        return "adminView/adminApplyMailSetting";
     }
 
     @GetMapping("/successMsgSetting")
@@ -162,7 +162,7 @@ public class AdminController {
 
         model.addAttribute("successMessageInfo", mailInfoService.mailInfo("success_msg"));
 
-        return "/adminView/adminApplySuccessSetting";
+        return "adminView/adminApplySuccessSetting";
     }
 
     @PostMapping("/applyMail/modify")
@@ -174,7 +174,7 @@ public class AdminController {
 
         mailInfoService.write(mailInfoTemp);
 
-        return "redirect:/admin/applyMailSetting";
+        return "redirect:admin/applyMailSetting";
     }
 
     @PostMapping("/successMsg/modify")
@@ -186,14 +186,14 @@ public class AdminController {
 
         mailInfoService.write(mailInfoTemp);
 
-        return "redirect:/admin/successMsgSetting";
+        return "redirect:admin/successMsgSetting";
     }
 
     @GetMapping("/apply/delete")
     public String adminApplyDelete(Long id){
         applyService.applyDelete(id);
 
-        return "redirect:/admin/applySetting";
+        return "redirect:admin/applySetting";
     }
 
     @GetMapping("/memberList")
@@ -201,26 +201,26 @@ public class AdminController {
 
         model.addAttribute("memberList", memberService.MemberList());
 
-        return "/adminView/adminMemberList";
+        return "adminView/adminMemberList";
     }
 
     @GetMapping("/addMember")
     public String addMemberView(){
-        return "/adminView/adminAddMember";
+        return "adminView/adminAddMember";
     }
 
     @PostMapping("/member/success")
     public String createMember(Member member){
 
         memberService.save(member);
-        return "redirect:/admin/memberList";
+        return "redirect:admin/memberList";
     }
 
     @GetMapping("/member/delete")
     public String adminMemberDelete(Long id){
         memberService.memberDelete(id);
 
-        return "redirect:/admin/memberList";
+        return "redirect:admin/memberList";
     }
 
 }

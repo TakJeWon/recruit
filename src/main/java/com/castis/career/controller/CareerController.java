@@ -22,7 +22,6 @@ import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 
 @Controller
-@RequestMapping("/")
 public class CareerController {
 
     @Autowired
@@ -37,25 +36,25 @@ public class CareerController {
     @Autowired
     private MailInfoService mailInfoService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public String rootRecruit() {
-        return "redirect:/home";
+        return "redirect:home";
     }
 
     @GetMapping("/home")
     public String homepage(){
 
-        return "/view/home";
+        return "view/home";
     }
 
     @GetMapping("/culture")
     public String culturePage(){
-        return "/view/culture";
+        return "view/culture";
     }
 
     @GetMapping("/people")
     public String peoplePage(){
-        return "/view/people";
+        return "view/people";
     }
 
     @GetMapping("/jobs")
@@ -63,7 +62,7 @@ public class CareerController {
 
         model.addAttribute("jobList", boardService.boardList());
 
-        return "/view/jobs";
+        return "view/jobs";
     }
 
     @GetMapping("/jobDetail")
@@ -71,7 +70,7 @@ public class CareerController {
 
         model.addAttribute("jobDetails", boardService.boardView(id));
 
-        return "/view/jobs_detail";
+        return "view/jobs_detail";
     }
 
     // 공고 ; 첨부 파일 다운로드
@@ -98,12 +97,12 @@ public class CareerController {
         model.addAttribute("jobDetails", boardService.boardView(id));
         model.addAttribute("successMessageInfo", mailInfoService.mailInfo("success_msg"));
 
-        return "/view/apply";
+        return "view/apply";
     }
 
     @GetMapping("/faq")
     public String faqPage(){
-        return "/view/faq";
+        return "view/faq";
     }
 
     @PostMapping("/apply/success/{jobId}")
@@ -123,7 +122,7 @@ public class CareerController {
         //공고 DB 저장
         applyService.applyWrite(jobId, apply, file);
 
-        return "/view/apply_success";
+        return "view/apply_success";
     }
 
 
