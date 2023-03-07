@@ -38,7 +38,7 @@ public class CareerController {
 
     @GetMapping("")
     public String rootRecruit() {
-        return "redirect:home";
+        return "redirect:/home";
     }
 
     @GetMapping("/home")

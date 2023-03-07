@@ -11,15 +11,19 @@
             <div class="d-flex justify-content-start mb-3 applyForm">
                 <span style="width: 150px;">공고 제목
                     <sup>*</sup></span>
-                <input class="apply-form-control-lg" style="width: 70%" type="text" name="title" th:value="${board.title}">
+                <input class="apply-form-control-lg" style="width: 70%"
+                       type="text" name="title" th:value="${board.title}"
+                       id="board_title">
             </div>
             <div class="d-flex justify-content-start mb-3 applyForm">
                 <span style="width: 150px;">공고 기간
                     <sup>*</sup></span>
                 <div class="d-flex justify-content-start applyForm">
-                    <input type="date" id="startDatePicker" class="form-control me-3" name="start_date" th:value="${#dates.format(board.start_date, 'yyyy-MM-dd')}">
+                    <input type="date" id="startDatePicker" class="form-control me-3"
+                           name="start_date" th:value="${#dates.format(board.start_date, 'yyyy-MM-dd')}">
                     <div class="px-3 d-flex align-content-center"> ~ </div>
-                    <input type="date" id="endDatePicker" class="form-control" name="end_date" th:value="${#dates.format(board.end_date, 'yyyy-MM-dd')}">
+                    <input type="date" id="endDatePicker" class="form-control"
+                           name="end_date" th:value="${#dates.format(board.end_date, 'yyyy-MM-dd')}">
                 </div>
             </div>
             <div class="d-flex justify-content-start mb-3 applyForm">
@@ -28,18 +32,22 @@
                     <div class="d-flex justify-content-between mb-3 applyForm">
                         <span style="width: 100px;">경력
                     <sup>*</sup></span>
-                        <input class="apply-form-control-sm me-5" type="text" name="experience" th:value="${board.experience}">
+                        <input class="apply-form-control-sm me-5" id="board_experience"
+                               type="text" name="experience" th:value="${board.experience}">
                         <span style="width: 100px;">학력
                     <sup>*</sup></span>
-                        <input class="apply-form-control-sm" type="text" name="education" th:value="${board.education}">
+                        <input class="apply-form-control-sm" id="board_education"
+                               type="text" name="education" th:value="${board.education}">
                     </div>
                     <div class="d-flex justify-content-between mb-3 applyForm">
                         <span style="width: 100px;">근무 형태
                     <sup>*</sup></span>
-                        <input class="apply-form-control-sm me-5" type="text" name="type" th:value="${board.type}">
+                        <input class="apply-form-control-sm me-5" id="board_type"
+                               type="text" name="type" th:value="${board.type}">
                         <span style="width: 100px;">근무지
                     <sup>*</sup></span>
-                        <input class="apply-form-control-sm" type="text" name="location" th:value="${board.location}">
+                        <input class="apply-form-control-sm" type="text" id="board_location"
+                               name="location" th:value="${board.location}">
                     </div>
                 </div>
             </div>

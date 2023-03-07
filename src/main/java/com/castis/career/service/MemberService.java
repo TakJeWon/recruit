@@ -58,4 +58,5 @@ public class MemberService implements UserDetailsService {
 
     //member 삭제
     public void memberDelete(Long id) { memberRepository.deleteById(id); }
+
 }

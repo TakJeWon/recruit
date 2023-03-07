@@ -7,11 +7,11 @@
 
 
     <div class="card shadow mb-4">
-        <form class="card-body m-3" action="/admin/register/success" method="post" enctype="multipart/form-data">
+        <form class="card-body m-3" enctype="multipart/form-data">
             <div class="d-flex justify-content-start mb-3 applyForm">
                 <span style="width: 150px;">공고 제목
                     <sup>*</sup></span>
-                <input class="apply-form-control-lg"  type="text" name="title">
+                <input class="apply-form-control-lg"  type="text" name="title" id="board_title">
             </div>
             <div class="d-flex justify-content-start mb-3 applyForm">
                 <span style="width: 150px;">공고 기간
@@ -28,18 +28,18 @@
                     <div class="d-flex justify-content-between mb-3 applyForm">
                         <span style="width: 100px;">경력
                     <sup>*</sup></span>
-                        <input class="apply-form-control-sm me-5" type="text" name="experience">
+                        <input class="apply-form-control-sm me-5" type="text" name="experience" id="board_experience">
                         <span style="width: 100px;">학력
                     <sup>*</sup></span>
-                        <input class="apply-form-control-sm" type="text" name="education">
+                        <input class="apply-form-control-sm" type="text" name="education" id="board_education">
                     </div>
                     <div class="d-flex justify-content-between applyForm">
                         <span style="width: 100px;">근무 형태
                     <sup>*</sup></span>
-                        <input class="apply-form-control-sm me-5" type="text" name="type">
+                        <input class="apply-form-control-sm me-5" type="text" name="type" id="board_type">
                         <span style="width: 100px;">근무지
                     <sup>*</sup></span>
-                        <input class="apply-form-control-sm" type="text" name="location">
+                        <input class="apply-form-control-sm" type="text" name="location" id="board_location">
                     </div>
                 </div>
             </div>
@@ -54,10 +54,12 @@
             </div>
             <div class="d-flex justify-content-start mb-3 applyForm">
                 <span style="width: 150px;">첨부 파일 </span>
-                <input class="form-control" type="file" style="width: 80%", name="file">
+                <input class="form-control" type="file" id="board_file"
+                       style="width: 80%", name="file">
             </div>
             <div class="d-flex justify-content-end ">
-                <button type="submit"
+                <button type="button"
+                        onclick="admin_board_submit()"
                         class="btn btn-sm btn-primary"
                         style="height: 40px; width: 100px;"
                 >등록</button>

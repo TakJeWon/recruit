@@ -49,9 +49,9 @@ public class AdminController {
         if (!(auth instanceof AnonymousAuthenticationToken)){
 
             //로그인성공
-            return "redirect:admin/dashboard";
+            return "redirect:/admin/dashboard";
         }
-        return "redirect:admin/adminLogin";
+        return "redirect:/admin/adminLogin";
     }
 
     @GetMapping("/adminLogin")
@@ -82,14 +82,14 @@ public class AdminController {
 
         boardService.write(board, file);
 
-        return "redirect:admin/boardSetting";
+        return "redirect:/admin/boardSetting";
     }
 
     @GetMapping("/register/delete")
     public String adminBoardDelete(Long id){
         boardService.boardDelete(id);
 
-        return "redirect:admin/boardSetting";
+        return "redirect:/admin/boardSetting";
     }
 
     @GetMapping("/boardView")
@@ -119,7 +119,7 @@ public class AdminController {
 
         boardService.write(boardTemp, file);
 
-        return "redirect:admin/boardSetting";
+        return "redirect:/admin/boardSetting";
     }
 
     // 지원서 ; 첨부 파일 다운로드
@@ -174,7 +174,7 @@ public class AdminController {
 
         mailInfoService.write(mailInfoTemp);
 
-        return "redirect:admin/applyMailSetting";
+        return "redirect:/admin/applyMailSetting";
     }
 
     @PostMapping("/successMsg/modify")
@@ -186,14 +186,14 @@ public class AdminController {
 
         mailInfoService.write(mailInfoTemp);
 
-        return "redirect:admin/successMsgSetting";
+        return "redirect:/admin/successMsgSetting";
     }
 
     @GetMapping("/apply/delete")
     public String adminApplyDelete(Long id){
         applyService.applyDelete(id);
 
-        return "redirect:admin/applySetting";
+        return "redirect:/admin/applySetting";
     }
 
     @GetMapping("/memberList")
@@ -209,18 +209,19 @@ public class AdminController {
         return "adminView/adminAddMember";
     }
 
+
     @PostMapping("/member/success")
     public String createMember(Member member){
 
         memberService.save(member);
-        return "redirect:admin/memberList";
+        return "redirect:/admin/memberList";
     }
 
     @GetMapping("/member/delete")
     public String adminMemberDelete(Long id){
         memberService.memberDelete(id);
 
-        return "redirect:admin/memberList";
+        return "redirect:/admin/memberList";
     }
 
 }
