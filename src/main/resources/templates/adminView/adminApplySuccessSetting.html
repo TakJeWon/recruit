@@ -5,11 +5,8 @@
     <h1 class="h3 mb-2 text-gray-800">지원자 메일 설정</h1>
     <p class="mb-4">지원자가 지원하였을 때 보낼 메일을 설정할 수 있습니다.</p>
 
-    <div class="d-flex justify-content-end mb-3">
-        <button class="btn btn-sm btn-primary"
-                style="height: 40px; width: 100px;"
-                th:onclick="modify()"
-        >수정하기</button>
+    <div class="d-flex justify-content-start  mt-3">
+        <p class="mb-4">* 현재 설정된 지원완료 문구 내용입니다.</p>
     </div>
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -18,23 +15,28 @@
             <p th:utext="${successMessageInfo.content}"></p>
         </div>
     </div>
+    <div class="d-flex justify-content-start  mb-3">
+        <p class="mt-4">* 지원완료 문구 내용 수정을 원하실 때 이용해주세요.</p>
+    </div>
     <div class="card shadow mb-4" >
-        <form class="card-body m-3" action="/admin/successMsg/modify" method="post">
+        <form class="card-body m-3">
             <div class="d-flex justify-content-start mb-3 applyForm">
-                <span style="width: 150px;">메일 제목</span>
-                <input class="apply-form-control-lg" type="text" name="title" th:value="${successMessageInfo.title}">
+                <span style="width: 150px;">제목</span>
+                <input class="apply-form-control-lg" type="text" name="title" id="message_title"
+                       th:value="${successMessageInfo.title}">
             </div>
             <div class="d-flex justify-content-start mb-3 applyForm">
-                <span style="width: 150px;">메일 내용</span>
+                <span style="width: 150px;">내용</span>
                 <textarea class="apply-form-control-lg"
-                          id="editor"
+                          id="kothing-editor"
                           name="content"
                           style="height: 500px; width: 90%"
                           th:text="${successMessageInfo.content}">
                 </textarea>
             </div>
             <div class="d-flex justify-content-end ">
-                <button type="submit"
+                <button type="button"
+                        onclick="apply_success_setting()"
                         class="btn btn-sm btn-primary"
                         style="height: 40px; width: 100px;"
                 >수정</button>

@@ -1,8 +1,10 @@
 package com.castis.career.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -25,4 +27,7 @@ public class Apply {
     private String filename;
 
     private String filepath;
+
+    @CreationTimestamp
+    private LocalDateTime creation_time;
 }

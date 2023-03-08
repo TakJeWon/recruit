@@ -66,9 +66,13 @@ public class CareerController {
     }
 
     @GetMapping("/jobDetail")
-    public String jobDetailPage( Long id, Model model){
+    public String jobDetailPage( Long id, Model model) throws IOException {
 
         model.addAttribute("jobDetails", boardService.boardView(id));
+
+        Board board = boardService.boardView(id);
+        board.setView_count(board.getView_count() + 1);
+        boardService.noFileChanged(board);
 
         return "view/jobs_detail";
     }
@@ -92,7 +96,7 @@ public class CareerController {
     }
 
     @GetMapping("/jobApply")
-    public String jobApplyPage(Long id, Model model){
+    public String jobApplyPage(Long id, Model model) {
 
         model.addAttribute("jobDetails", boardService.boardView(id));
         model.addAttribute("successMessageInfo", mailInfoService.mailInfo("success_msg"));
@@ -106,6 +110,7 @@ public class CareerController {
     }
 
     @PostMapping("/apply/success/{jobId}")
+    @ResponseBody
     public String applySuccess(@PathVariable("jobId") Long jobId,
                                Apply apply,
                                MultipartFile file,
@@ -121,6 +126,15 @@ public class CareerController {
 
         //공고 DB 저장
         applyService.applyWrite(jobId, apply, file);
+
+        String redirectUrl = "/apply/successMessage";
+        return redirectUrl;
+    }
+
+    @GetMapping("/apply/successMessage")
+    public String applySuccessHtml(Model model){
+
+        model.addAttribute("successMessageInfo", mailInfoService.mailInfo("success_msg"));
 
         return "view/apply_success";
     }

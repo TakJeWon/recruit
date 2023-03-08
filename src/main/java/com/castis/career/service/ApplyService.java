@@ -81,7 +81,16 @@ public class ApplyService {
     public List<Apply> applyList(){ return applyRepository.findAll(); }
 
     //지원서 삭제
-    public void applyDelete(Long id) { applyRepository.deleteById(id); }
+    public void applyDelete(Long id) {
+        Apply deleteApply = applyRepository.findById(id).orElse(null);
+
+        File file = new File(deleteApply.getFilepath());
+        if (file.exists()){
+            file.delete();
+        }
+
+        applyRepository.deleteById(id);
+    }
 
     //특정 지원서 불러오기
     public Apply applyView(Long id) { return applyRepository.findById(id).get(); }

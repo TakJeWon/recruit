@@ -1,12 +1,11 @@
 package com.castis.career.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -19,6 +18,7 @@ public class Board {
 
     private String title;
 
+    @Column(columnDefinition = "LONGTEXT")
     private String content;
 
     private String experience;
@@ -38,4 +38,11 @@ public class Board {
     private String filename;
 
     private String filepath;
+
+    private int view_count;
+
+    @CreationTimestamp
+    private LocalDateTime creation_time;
+
+
 }

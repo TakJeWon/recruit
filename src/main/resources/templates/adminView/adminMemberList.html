@@ -1,4 +1,4 @@
-<html layout:decorate="~{adminView/adminIndex}">
+<html layout:decorate="~{adminView/adminIndex}" xmlns:layout="http://www.w3.org/1999/xhtml">
 <div layout:fragment="adminContent" class="container-fluid" xmlns:th="http://www.thymeleaf.org">
 
     <!-- Page Heading -->
@@ -22,7 +22,8 @@
                         <td th:text="${member.email}">Tiger Nixon</td>
                         <td th:text="${member.role}">Tiger Nixon</td>
                         <td>
-                            <a class="btn btn-danger btn-circle ms-2" th:href="@{/admin/member/delete(id=${member.id})}">
+                            <a class="btn btn-danger btn-circle ms-2"
+                               th:onclick="'javascript:admin_member_delete('+ ${member.id} + ');'">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>

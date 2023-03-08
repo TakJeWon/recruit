@@ -40,8 +40,9 @@
                     &nbsp;~&nbsp;
                     <span th:text="${#dates.format(jobDetails.end_date, 'yyyy.MM.dd')}"></span>
                 </div>
-                <p class="custom_board_text custom_board_content d-flex justify-content-end" th:utext="${jobDetails.content}"> </p>
-                <a th:text="${jobDetails.filename}" th:href="|/download/${jobDetails.id}|"></a>
+                <p class="custom_board_text custom_board_content d-flex" th:utext="${jobDetails.content}"></p>
+                <p class="custom_board_text custom_board_content" th:if="${jobDetails.filename} != null"> * 아래 첨부되어 있는 지원서를 확인해보세요.</p>
+                <a class="custom_board_text custom_board_content" th:text="${jobDetails.filename}" th:href="|/download/${jobDetails.id}|"></a>
                 <a class="btn btn-sm d-flex justify-content-center custom_apply_button my-5"
                         th:href="@{/jobApply(id=${jobDetails.id})}">
                     <span>지원하기</span>

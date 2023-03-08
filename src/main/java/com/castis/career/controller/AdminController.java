@@ -8,6 +8,7 @@ import com.castis.career.service.ApplyService;
 import com.castis.career.service.BoardService;
 import com.castis.career.service.MailInfoService;
 import com.castis.career.service.MemberService;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
@@ -20,8 +21,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.util.UriUtils;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
@@ -100,10 +104,19 @@ public class AdminController {
         return "adminView/adminBoardView";
     }
 
+    @GetMapping("/file/delete")
+    public String adminBoardFileModify(Long id){
+
+        boardService.boardFileDelete(id);
+
+        return "adminView/adminBoardView";
+    }
+
     @PostMapping("/register/update/{id}")
     public String adminBoardUpdate(@PathVariable("id") Long id,
                                    Board board,
                                    MultipartFile file) throws IOException {
+
 
         Board boardTemp = boardService.boardView(id);
         boardTemp.setTitle(board.getTitle());
@@ -114,10 +127,14 @@ public class AdminController {
         boardTemp.setLocation(board.getLocation());
         boardTemp.setStart_date(board.getStart_date());
         boardTemp.setEnd_date(board.getEnd_date());
-        boardTemp.setFilename(board.getFilename());
-        boardTemp.setFilepath(board.getFilepath());
+        if(boardTemp.getFilepath() != null){
+            boardService.noFileChanged(boardTemp);
+        } else {
+            boardTemp.setFilename(board.getFilename());
+            boardTemp.setFilepath(board.getFilepath());
+            boardService.write(boardTemp, file);
+        }
 
-        boardService.write(boardTemp, file);
 
         return "redirect:/admin/boardSetting";
     }

@@ -40,7 +40,7 @@ function apply_submit(jobId){
         showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
         confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
         cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
-        confirmButtonText: '지원 완료', // confirm 버튼 텍스트 지정
+        confirmButtonText: '지원', // confirm 버튼 텍스트 지정
         cancelButtonText: '취소', // cancel 버튼 텍스트 지정
 
         reverseButtons: true, // 버튼 순서 거꾸로
@@ -52,10 +52,27 @@ function apply_submit(jobId){
                 data: formData,
                 contentType: false,
                 processData: false,
-                success: function(data) {
-                    Swal.fire("성공", "등록을 정상적으로 완료하였습니다.", "success");
+                beforeSend: function() {
+                    //마우스 커서를 로딩 중 커서로 변경
+                    $('html').css("cursor", "wait");
+                    $('.wrap-loading').removeClass('display-none');
                 },
+                success: function(response) {
+                    $('html').css("cursor", "auto");
+                    $('.wrap-loading').addClass('display-none');
+                    // Swal.fire({
+                    //     icon: 'success',
+                    //     title: '지원 접수 성공',
+                    //     text: '지원 접수에 성공하였습니다!'
+                    // }).then(function (){
+                    //     $.get('/apply/successMessage')
+                    // })
+                    window.location.href = response;
+                },
+
                 error : function(e) {
+                    $('html').css("cursor", "auto");
+                    $('.wrap-loading').addClass('display-none');
                     Swal.fire("실패", "지원에 실패하였습니다. 관리자에게 문의해주세요.", "error");
                 },
                 timeout:100000

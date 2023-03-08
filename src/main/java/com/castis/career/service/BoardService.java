@@ -9,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -26,7 +27,7 @@ public class BoardService {
     //공고 저장
     public void write(Board board, MultipartFile file) throws IOException {
 
-        if (!file.getOriginalFilename().equals("")){
+        if (!file.getOriginalFilename().equals("") && board.getFilename() == null){
         // 파일 이름으로 쓸 uuid 생성
         UUID uuid = UUID.randomUUID();
 
@@ -45,6 +46,11 @@ public class BoardService {
         boardRepository.save(board);
     }
 
+    //공고 파일 변경 없이 저장
+    public void noFileChanged(Board board) throws IOException {
+        boardRepository.save(board);
+    }
+
     //공고 목록 불러오기
     public List<Board> boardList() {
         return boardRepository.findAll(Sort.by(Sort.Direction.DESC, "Id"));
@@ -52,7 +58,28 @@ public class BoardService {
 
     //공고 삭제
     public void boardDelete(Long id){
+        Board deleteBoard = boardRepository.findById(id).orElse(null);
+
+        File file = new File(deleteBoard.getFilepath());
+        if (file.exists()){
+            file.delete();
+        }
         boardRepository.deleteById(id);
+    }
+
+    public void boardFileDelete(Long id){
+        Board deleteBoard = boardRepository.findById(id).orElse(null);
+
+        if (deleteBoard.getFilepath() != null){
+            File file = new File(deleteBoard.getFilepath());
+            if (file.exists()){
+                deleteBoard.setFilepath(null);
+                deleteBoard.setFilename(null);
+                boardRepository.save(deleteBoard);
+                file.delete();
+            }
+
+        }
     }
 
     //특정 게시글 불러오기

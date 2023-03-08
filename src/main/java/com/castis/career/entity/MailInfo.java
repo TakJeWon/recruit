@@ -17,5 +17,6 @@ public class MailInfo {
 
     private String title;
 
+    @Column(columnDefinition = "LONGTEXT")
     private String content;
 }
