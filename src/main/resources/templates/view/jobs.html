@@ -34,12 +34,12 @@
                  th:if="${jobList.size() == 0}">
                 현재 진행중인 채용공고가 없습니다.
             </div>
-            <div class="d-flex justify-content-end m-3 mb-5"  th:if="${jobList.size() != 0}">
-                <input class="custom_search_input" placeholder="KEYWORD"/>
-                <button class="ms-3 custom_search_button">
-                    <span>SEARCH</span>
-                </button>
-            </div>
+<!--            <div class="d-flex justify-content-end m-3 mb-5"  th:if="${jobList.size() != 0}">-->
+<!--                <input class="custom_search_input" placeholder="KEYWORD"/>-->
+<!--                <button class="ms-3 custom_search_button">-->
+<!--                    <span>SEARCH</span>-->
+<!--                </button>-->
+<!--            </div>-->
             <ul class="jobList"  th:if="${jobList.size() != 0}">
                 <li th:each="job : ${jobList}">
                     <a th:href="@{/jobDetail(id=${job.id})}">

@@ -53,13 +53,21 @@ public class AdminController {
         if (!(auth instanceof AnonymousAuthenticationToken)){
 
             //로그인성공
-            return "redirect:/admin/dashboard";
+            return "redirect:/admin/boardSetting";
         }
         return "redirect:/admin/adminLogin";
     }
 
     @GetMapping("/adminLogin")
     public String adminLogin(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (!(auth instanceof AnonymousAuthenticationToken)){
+
+            //로그인성공
+            return "redirect:/adminDashboard";
+        }
+
         return "adminView/adminLogin";
     }
 

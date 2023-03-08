@@ -21,7 +21,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
         session.setAttribute("greeting", authentication.getName() + "님 반갑습니다.");
 
-        response.sendRedirect("/admin/dashboard");
+        response.sendRedirect("/admin/boardSetting");
     }
 
 }
