@@ -121,11 +121,12 @@ public class CareerController {
         //공고 관리자에게 메일 보내기 (첨부파일 포함)
         applyService.sendAttachedEmail(apply, file);
 
+        //공고 DB 저장
+        applyService.applyWrite(jobId, apply, file);
+
         //공고 지원자에게 메일 보내기 (첨부파일 없음)
         applyService.sendEmail(apply);
 
-        //공고 DB 저장
-        applyService.applyWrite(jobId, apply, file);
 
         String redirectUrl = "/apply/successMessage";
         return redirectUrl;

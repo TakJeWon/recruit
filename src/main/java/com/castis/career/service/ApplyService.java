@@ -15,6 +15,7 @@ import org.codehaus.groovy.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.data.domain.Sort;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -78,7 +79,9 @@ public class ApplyService {
     }
 
     //지원서 목록 불러오기
-    public List<Apply> applyList(){ return applyRepository.findAll(); }
+    public List<Apply> applyList(){
+        return applyRepository.findAll(Sort.by(Sort.Direction.DESC, "Id"));
+    }
 
     //지원서 삭제
     public void applyDelete(Long id) {
