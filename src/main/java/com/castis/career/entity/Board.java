@@ -41,6 +41,8 @@ public class Board {
 
     private int view_count;
 
+    private int apply_count;
+
     @CreationTimestamp
     private LocalDateTime creation_time;
 

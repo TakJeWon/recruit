@@ -4129,7 +4129,9 @@ input[type="button"].btn-block {
 }
 
 .navbar {
-  position: relative;
+  background: #fff;
+  position: sticky;
+  right: 0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

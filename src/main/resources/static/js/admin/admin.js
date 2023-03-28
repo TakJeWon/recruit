@@ -344,6 +344,37 @@ function admin_file_delete(boardId){
 }
 
 
+function cancel_update_board(){
+
+    Swal.fire({
+        title: '수정 취소',
+        text: '수정을 그만두고 공고 목록으로 돌아갈까요?',
+        icon: 'Question',
+
+        showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+        confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+        cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+        confirmButtonText: '목록으로', // confirm 버튼 텍스트 지정
+        cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+
+        reverseButtons: true, // 버튼 순서 거꾸로
+    }).then(result => {
+        if (result.isConfirmed){
+            $.ajax({
+                type: "GET",
+                url: "/admin/cancel_board_update",
+                success: function(response) {
+                    $('html').css("cursor", "auto");
+                    $('.wrap-loading').addClass('display-none');
+                    window.location.href = response;
+                },
+                timeout:100000
+            })
+        }
+    });
+
+
+}
 
 let email_address = document.getElementById('admin_email');
 let password = document.getElementById('admin_password');

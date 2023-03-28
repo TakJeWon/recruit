@@ -165,6 +165,13 @@ public class AdminController {
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,contentDisposition).body(resource);
     }
 
+    @GetMapping("/cancel_board_update")
+    @ResponseBody
+    public String cancelBoardUpdate(){
+
+        String redirectUrl = "/admin/boardSetting";
+        return redirectUrl;
+    }
 
     @GetMapping("/applySetting")
     public String adminApplySetting(Model model){

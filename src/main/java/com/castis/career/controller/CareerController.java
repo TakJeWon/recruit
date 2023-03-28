@@ -65,6 +65,14 @@ public class CareerController {
         return "view/jobs";
     }
 
+    @GetMapping("/job_list")
+    @ResponseBody
+    public String jobList(){
+
+        String redirectUrl = "/jobs";
+        return redirectUrl;
+    }
+
     @GetMapping("/jobDetail")
     public String jobDetailPage( Long id, Model model) throws IOException {
 
@@ -86,6 +94,7 @@ public class CareerController {
         String board_orgName = board_fileName.substring(board_fileName.lastIndexOf("."));
 
         UrlResource resource = new UrlResource("file:" + board_file.getFilepath());
+
         String encodedFileName = UriUtils.encode(board_fileName, StandardCharsets.UTF_8);
 
         // 파일 다운로드 대화상자가 뜨도록 하는 헤더를 설정해주는 것
@@ -123,6 +132,9 @@ public class CareerController {
 
         //공고 DB 저장
         applyService.applyWrite(jobId, apply, file);
+        Board board = boardService.boardView(jobId);
+        board.setApply_count(board.getApply_count() + 1);
+        boardService.noFileChanged(board);
 
         //공고 지원자에게 메일 보내기 (첨부파일 없음)
         applyService.sendEmail(apply);

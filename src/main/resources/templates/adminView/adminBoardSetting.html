@@ -18,10 +18,11 @@
                 <table class="table table-bordered" id="dataTable" >
                     <thead>
                     <tr>
-                        <th style="width: 45%">공고 제목</th>
+                        <th style="width: 35%">공고 제목</th>
                         <th style="width: 15%">공고 등록일자</th>
                         <th style="width: 20%">공고 등록기간</th>
                         <th style="width: 10%">조회수</th>
+                        <th style="width: 10%">지원자 수</th>
                         <th style="width: 10%"></th>
                     </tr>
                     </thead>
@@ -35,6 +36,7 @@
                             <span th:text="${#dates.format(board.end_date, 'yyyy.MM.dd')}"></span>
                         </td>
                         <td th:text="${board.view_count}">61</td>
+                        <td th:text="${board.apply_count}">61</td>
                         <td class="d-flex justify-content-around">
                             <a th:href="@{/admin/boardView(id=${board.id})}" class="btn btn-warning btn-circle">
 <!--                                <a class="btn btn-warning btn-circle">-->
