@@ -222,7 +222,12 @@ public class AdminController {
     }
 
     @GetMapping("/apply/delete")
-    public String adminApplyDelete(Long id){
+    public String adminApplyDelete(Long id) throws IOException {
+
+        Apply apply = applyService.applyView(id);
+        Board board = boardService.boardView(apply.getBoard().getId());
+        board.setApply_count(board.getApply_count() - 1);
+        boardService.noFileChanged(board);
         applyService.applyDelete(id);
 
         return "redirect:/admin/applySetting";

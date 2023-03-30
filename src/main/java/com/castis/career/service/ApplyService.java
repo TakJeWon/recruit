@@ -104,11 +104,11 @@ public class ApplyService {
         MailAttachedDTO mail = new MailAttachedDTO();
         MailInfo mailInfo = mailInfoService.mailInfo("admin");
 
-        mail.setAddress("taknineball@castis.com");
+        mail.setAddress(mailInfo.getAdmin_address());
         mail.setFileName(apply.getFilename());
         mail.setContent(mailInfo.getContent());
         mail.setTitle(mailInfo.getTitle());
-        mail.setCcAddress("taknineball@castis.com");
+        mail.setCcAddress(mailInfo.getAdmin_address());
 
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
