@@ -1,46 +1,117 @@
 <html layout:decorate="~{index}">
-<header layout:fragment="header" class="mastheadCulutre" style="background-image: url('img/asset/manu/3.svg');">
+<header layout:fragment="header" class="mastheadCulutre">
+    <p class="culture-title d-flex justify-content-center">HOW WE WORK</p>
+    <p class="culture-mainText d-flex justify-content-center">일에 몰입하여 즐거움과 성장의 기쁨을 느끼며 새로운 역사를 만들어갑니다.</p>
 </header>
 
 <!-- Main Content-->
 <main layout:fragment="content" class="mb-4">
-    <div class="container px-4 px-lg-8">
-        <p class="culture-title d-flex justify-content-center">HOW WE WORK</p>
-        <p class="culture-mainText d-flex justify-content-center">일에 몰입하여 즐거움과 성장의 기쁨을 느끼며 새로운 역사를 만들어갑니다.</p>
-        <div class="culture-container d-flex justify-content-between">
-            <img class="culture-img" th:src="@{/img/asset/tech/Banking.svg}"/>
-            <div class="d-flex flex-column justify-content-center align-items-start">
-                <p class="culture-mainText">[보상/성과]</p>
-                <p class="culture-content">프로젝트의 시작부터 끝까지 보상이 눈에 보이는 문화를 만듭니다.</p>
-                <p class="culture-content">
-                    누군가의 주관적인 의견으로 성과와 평가가 정해지 않습니다.<br>
-                    개인의 성장과 평가가 일치되도록 수치화 할 수 있는 [사내 성과 플랫폼]을 제공하고
-                    이를 이용함으로서 명확하게 나의 성과를 책정하고 보상 받습니다.
-                </p>
+    <div class="culture_business_platform d-flex flex-column">
+        <div class="culture_main_box d-flex flex-column justify-content-start">
+            <div class="culture_main_title">비즈니스 플랫폼</div>
+            <div class="culture_sub_title">
+                CASTIS는 모든 업무를</br>
+                서비스로 정의합니다.
+            </div>
+            <div class="culture_main_content">
+                서비스는 사고 팔 수 있어야 합니다.</br>
+                스스로 서비스를 직접 발행하고 거래하는</br>
+                우리들의 세계관을 일컬어 Business Platform 이라고 부릅니다.</br>
+                당신이 꿈꾸고 있는 어떠한 사업이라도 여기에서는 실현 가능합니다.
             </div>
         </div>
-        <div class="culture-container d-flex justify-content-between">
-            <div class="d-flex flex-column justify-content-center">
-                <p class="culture-mainText">[개인별 비전]</p>
-                <p class="culture-content">CASTIS에서는 누구나 리더가 될 수 있습니다.</p>
-                <p class="culture-content">
-                    각각의 프로젝트는 하나의 스타트업을 운영하는 것과 같습니다.<br>
-                    오너십을 가지고 자율적으로 의사결정하되, 그 결과는 겸허히 마주합니다.<br>
-                    그 여정에서 커리어 역시 성장할 것입니다.
-                </p>
-            </div>
-            <img class="culture-img" th:src="@{/img/asset/tech/user_experience.svg}"/>
+<!--        <div class="culture_plus_container">-->
+<!--            <div class="culture_plus_list">-->
+<!--                <div class="culture_plus_item">-->
+<!--                    <span class="culture_plus_item_txt">BUSINESS PLATFORM</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="d-flex justify-content-center">
+            <img style="width: 95%; margin-top: 15vh" th:src="@{/img/asset/culture/bussiness_platform.svg}"/>
         </div>
-        <div class="culture-container d-flex justify-content-between">
-            <img class="culture-img" th:src="@{/img/asset/tech/Artificial_intelligence.svg}"/>
-            <div class="d-flex flex-column justify-content-center">
-                <p class="culture-mainText">[소통]</p>
-                <p class="culture-content">이해관계자와 회고의 시간을 통하여, 안전/안심 커뮤니케이션을 지향합니다.</p>
-                <p class="culture-content">
-                    CASTIS에서는 자신의 불완전함을 인식하고 보완하기 위해 노력하는 태도를 기반으로 소통합니다.
-                    이를 통해 서로 존중하고 배려하며, 문제를 해결하는데 협력적인 팀워크를 이뤄나갈 수 있습니다.
-                </p>
+    </div>
+
+    <div class="culture_performance d-flex flex-column">
+        <div class="culture_main_box d-flex flex-column justify-content-start">
+            <div class="culture_main_title">개인성과</div>
+            <div class="culture_sub_title">
+                프로젝트의 시작부터 끝까지,</br>
+                보상이 눈에 보이는 문화를 만듭니다.
             </div>
+        </div>
+        <div class="culture_performance_img d-flex justify-content-center">
+            <img style="width: 70vh;" th:src="@{/img/asset/culture/culture_performance.svg}"/>
+        </div>
+        <div class="culture_main_content" style="text-align: center;">
+            누군가가 당신의 목표를 정해주지 않습니다.</br>
+            CASTIS 에서는 스스로 자기 결정 금액을 정하고,</br>
+            그 목표를 달성하기 위해 노력하는 분들이 모여있습니다.</br></br>
+
+            우리는 시키는 일을 열심히 하겠다는 분 보다는</br>
+            자기의 목표를 스스로 결정하고 달성하실 분들을 모십니다!</br></br>
+
+            물론, 초과 달성한 금액은 제한없이 개인 분에게 돌아갑니다.</br>
+            개인의 능력을 최대한 끌어내어 최대한의 베네핏으로 보상 받아 보세요!</br>
+        </div>
+    </div>
+
+    <div class="culture_issue d-flex flex-column">
+        <div class="culture_main_box d-flex flex-column justify-content-start">
+            <div class="culture_main_title">이슈 비춰보기</div>
+            <div class="culture_sub_title">
+                이해관계자와 자기 성찰의 시간을 통해</br>
+                안전/안심 커뮤니케이션을 지향합니다.
+            </div>
+        </div>
+        <div class="culture_performance_img d-flex justify-content-center">
+            <img style="width: 80vh;" th:src="@{/img/asset/culture/culture_issue.svg}"/>
+        </div>
+        <div class="culture_main_content" style="text-align: center;">
+            자기 결정 금액은 업무의 가치로만 이루어지지 않습니다.</br></br>
+
+            CASTIS에서는 자신의 불완전함을 인정하고,</br>
+            이를 보완하기 위해 노력하는 태도를 기반으로 소통합니다.</br></br>
+
+            서로간의 소통에 가치를 두며,</br>
+            이 소통을 이슈 비춰보기라 부릅니다.</br></br>
+
+            이런 소통 활동을 통하여 문제를 해결하다보면</br>
+            당신도, 당신의 동료도 조금 더 가치있는 일을 하며</br>
+            함께 성장할 수 있을 것입니다!</br>
+        </div>
+        <div class="culture_performance_img d-flex justify-content-center">
+            <img th:src="@{/img/asset/culture/culture_colleagues.svg}"/>
+        </div>
+        <div class="d-flex justify-content-center" style="margin-bottom: 150px">
+            <a class="d-flex justify-content-center btn btn-sm culture_button my-5"
+               href="https://daisy.castis.net/">
+                <span> 인재영입발굴 이슈비춰보기 체험해보기 </span>
+            </a>
+        </div>
+    </div>
+
+    <div class="culture_performance d-flex flex-column justify-content-center">
+        <div class="culture_main_box d-flex flex-column justify-content-start">
+            <div class="culture_main_title">직원 인터뷰</div>
+            <div class="culture_sub_title" style="margin-bottom: 50px">
+                CASTIS에서 일하면서</br>
+                어떤 점이 가장 좋으신가요?
+            </div>
+        </div>
+        <div class="swiper mySwiper swiper-h">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" >
+                    <img th:src="@{/img/asset/culture/culture_interview_1.svg}">
+                </div>
+                <div class="swiper-slide" >
+                    <img th:src="@{/img/asset/culture/culture_interview_2.svg}">
+                </div>
+                <div class="swiper-slide" >
+                    <img th:src="@{/img/asset/culture/culture_interview_3.svg}">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
         </div>
     </div>
 </main>

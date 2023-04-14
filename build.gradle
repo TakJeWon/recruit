@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.castis'
-version = '0.1-SNAPSHOT'
+version = '0.4-SNAPSHOT'
 sourceCompatibility = '11'
 
 configurations {

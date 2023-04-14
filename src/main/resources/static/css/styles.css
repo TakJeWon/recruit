@@ -11174,12 +11174,12 @@ header.mastheadCulutre {
   /*position: relative;*/
   margin-bottom: 3rem;
   padding-top: calc(8rem + 57px);
-  padding-bottom: 1rem;
+  /*padding-bottom: 1rem;*/
   background: no-repeat center center;
   background-color: #ffffff;
   background-size: cover;
   background-attachment: scroll;
-  height: 65vh;
+  height: 60vh;
 }
 
 header.mastheadCulutre:before {
@@ -12207,4 +12207,158 @@ textarea.form-control {
 
 .people-box{
   box-shadow: 0px 1px 20px 2px rgba(0,0,0,.09);
+}
+
+.culture_business_platform{
+  width: 100%;
+  height: 100vh;
+
+  background: #F2F2F2;
+}
+
+.culture_performance{
+  width: 100%;
+  margin-bottom: 205px;
+}
+
+.culture_issue{
+
+  width: 100%;
+  background: #F2F2F2;
+}
+
+.culture_main_box{
+
+  padding-left: 25vh;
+  padding-top: 15vh;
+}
+
+.culture_main_title{
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
+
+  color: #84848A;
+}
+
+.culture_sub_title{
+  margin-top: 26px;
+
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 65px;
+
+  color: #000000;
+
+}
+
+.culture_main_content{
+
+  margin-top: 53px;
+  margin-bottom: 30px;
+
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 35px;
+
+  color: #000000;
+}
+
+.culture_plus_container {
+  margin-top: 80px;
+  width: 100%;
+  display: flex;
+  white-space: nowrap;
+}
+
+.culture_plus_list {
+  display: flex;
+  align-items: top;
+  /*-webkit-animation: text-scroll 15s infinite linear;*/
+  /*animation: text-scroll 15s infinite linear;*/
+}
+
+.culture_plus_item_txt{
+
+  font-weight: 800;
+  font-size: 150px;
+  line-height: 200px;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+
+.culture_plus_content{
+
+  margin-top: 30px;
+
+  font-weight: 800;
+  font-size: 130px;
+  line-height: 157px;
+  width: 100%;
+
+  color: #ffffff;
+
+  animation: text-scroll 15s infinite linear;
+}
+
+@keyframes text-scroll {
+  100% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+.culture_performance_img{
+
+  margin-top: 80px;
+}
+
+
+.culture_button{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+
+  height: 100px;
+  width: 500px;
+
+  border: none;
+  background: #D9D9D9;
+  border-radius: 30px;
+
+  flex: none;
+  order: 1;
+  align-self: center;
+  flex-grow: 0;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;line-height: 1.15;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 44px;
+}
+
+.swiper {
+  width: 60%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
