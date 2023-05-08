@@ -27,20 +27,22 @@ public class BoardService {
     //공고 저장
     public void write(Board board, MultipartFile file) throws IOException {
 
-        if (!file.getOriginalFilename().equals("") && board.getFilename() == null){
-        // 파일 이름으로 쓸 uuid 생성
-        UUID uuid = UUID.randomUUID();
+        if(file != null){
+            if (!file.getOriginalFilename().equals("") && board.getFilename() == null){
+                // 파일 이름으로 쓸 uuid 생성
+                UUID uuid = UUID.randomUUID();
 
-        String fileName = uuid + "_" + file.getOriginalFilename();
-        File saveFile = new File(fileDir, fileName);
+                String fileName = uuid + "_" + file.getOriginalFilename();
+                File saveFile = new File(fileDir, fileName);
 
-        // 실제로 로컬에 uuid를 파일명으로 저장
-        file.transferTo(saveFile);
+                // 실제로 로컬에 uuid를 파일명으로 저장
+                file.transferTo(saveFile);
 
-        board.setFilename(file.getOriginalFilename());
-        // 파일을 불러올 때 사용할 파일 경로
-        board.setFilepath(fileDir + fileName);
+                board.setFilename(file.getOriginalFilename());
+                // 파일을 불러올 때 사용할 파일 경로
+                board.setFilepath(fileDir + fileName);
 
+            }
         }
 
         boardRepository.save(board);
@@ -60,9 +62,12 @@ public class BoardService {
     public void boardDelete(Long id){
         Board deleteBoard = boardRepository.findById(id).orElse(null);
 
-        File file = new File(deleteBoard.getFilepath());
-        if (file.exists()){
-            file.delete();
+        if (deleteBoard.getFilepath() != null){
+
+            File file = new File(deleteBoard.getFilepath());
+            if (file.exists()){
+                file.delete();
+            }
         }
         boardRepository.deleteById(id);
     }
