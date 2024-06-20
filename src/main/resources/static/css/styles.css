@@ -12209,11 +12209,20 @@ textarea.form-control {
   box-shadow: 0px 1px 20px 2px rgba(0,0,0,.09);
 }
 
-.culture_business_platform{
+.culture_business_platform {
   width: 100%;
-  height: 100vh;
+  height: 50vh;
 
   background: #F2F2F2;
+}
+
+@media (min-width: 992px) {
+  .culture_business_platform {
+    width: 100%;
+    height: 100vh;
+
+    background: #F2F2F2;
+  }
 }
 
 .culture_performance{
@@ -12227,42 +12236,96 @@ textarea.form-control {
   background: #F2F2F2;
 }
 
-.culture_main_box{
+.culture_main_box {
+  padding-left: 5vh;
+  padding-top: 5vh;
+}
 
-  padding-left: 25vh;
-  padding-top: 15vh;
+@media (min-width: 992px) {
+  .culture_main_box {
+    padding-left: 25vh;
+    padding-top: 15vh;
+  }
 }
 
 .culture_main_title{
   font-weight: 600;
-  font-size: 30px;
-  line-height: 36px;
+  font-size: 15px;
+  line-height: 18px;
 
   color: #84848A;
 }
 
-.culture_sub_title{
+@media (min-width: 992px) {
+  .culture_main_title{
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 36px;
+
+    color: #84848A;
+  }
+}
+
+.culture_sub_title {
   margin-top: 26px;
 
   font-weight: 600;
-  font-size: 50px;
-  line-height: 65px;
+  font-size: 23px;
+  line-height: 30px;
 
   color: #000000;
-
 }
 
-.culture_main_content{
+@media (min-width: 992px) {
+  .culture_sub_title {
+    margin-top: 26px;
 
-  margin-top: 53px;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 65px;
+
+    color: #000000;
+  }
+}
+
+.culture_main_content {
+
+  margin-top: 30px;
   margin-bottom: 30px;
 
   font-weight: 400;
-  font-size: 22px;
-  line-height: 35px;
+  font-size: 12px;
+  line-height: 20px;
 
   color: #000000;
 }
+
+@media (min-width: 992px) {
+  .culture_main_content {
+
+    margin-top: 53px;
+    margin-bottom: 30px;
+
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 35px;
+
+    color: #000000;
+  }
+}
+
+.businessImage {
+  width: 95%;
+  margin-top: 5vh;
+}
+
+@media (min-width: 992px) {
+  .businessImage {
+    width: 95%;
+    margin-top: 15vh;
+  }
+}
+
 
 .culture_plus_container {
   margin-top: 80px;
@@ -12312,20 +12375,38 @@ textarea.form-control {
 }
 
 .culture_performance_img{
-
   margin-top: 80px;
 }
 
+.performanceImage{
+  width: 50vh;
+}
 
-.culture_button{
+@media (min-width: 992px) {
+ .performanceImage{
+   width: 70vh;
+ }
+}
+
+.issueImage{
+  width: 50vh;
+}
+
+@media (min-width: 992px) {
+  .issueImage{
+    width: 80vh;
+  }
+}
+
+.culture_button {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 20px;
   gap: 10px;
 
-  height: 100px;
-  width: 500px;
+  height: 80px;
+  width: 300px;
 
   border: none;
   background: #D9D9D9;
@@ -12336,15 +12417,51 @@ textarea.form-control {
   align-self: center;
   flex-grow: 0;
 
-  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;line-height: 1.15;
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  line-height: 1.15;
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 44px;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+@media (min-width: 992px) {
+  .culture_button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+
+    height: 100px;
+    width: 500px;
+
+    border: none;
+    background: #D9D9D9;
+    border-radius: 30px;
+
+    flex: none;
+    order: 1;
+    align-self: center;
+    flex-grow: 0;
+
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    line-height: 1.15;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 44px;
+  }
 }
 
 .swiper {
-  width: 60%;
+  width: 80%;
+}
+
+@media (min-width: 992px) {
+  .swiper {
+    width: 60%;
+  }
 }
 
 .swiper-slide {
